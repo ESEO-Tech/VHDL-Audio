@@ -76,6 +76,10 @@ begin
 
     -- Check left-right clock.
 
+    -- Check ready.
+
+    -- Check serial data.
+
     -- Check clock alignment.
     process(i2s_serial_clk, i2s_serial_data, i2s_left_right_clk)
     begin
@@ -97,9 +101,4 @@ begin
                 severity ERROR;
         end if;
     end process;
-
-    -- Check ready.
-
-    -- Check serial data.
-
 end architecture Simulation;
