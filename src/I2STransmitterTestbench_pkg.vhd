@@ -6,7 +6,7 @@ package I2STransmitterTestbench_pkg is
 	constant CLK_FREQUENCY_HZ               : positive                                 := 100e6;
 
 	constant I2S_SAMPLE_RATE_HZ             : positive                                 := 22_050;
-	constant I2S_MASTER_FREQUENCY_HZ        : positive                                 := 256 * SAMPLE_RATE_HZ;
+	constant I2S_MASTER_FREQUENCY_HZ        : positive                                 := 256 * I2S_SAMPLE_RATE_HZ;
 	constant I2S_BITS_PER_SAMPLE            : positive                                 := 16;
 	constant I2S_LEFT_DATA                  : signed(I2S_BITS_PER_SAMPLE - 1 downto 0) := "0011010111001010";
 	constant I2S_RIGHT_DATA                 : signed(I2S_BITS_PER_SAMPLE - 1 downto 0) := "1010001101011100";
