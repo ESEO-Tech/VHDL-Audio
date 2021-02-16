@@ -32,8 +32,8 @@ begin
 		)
 		port map(
 			clk_i            => clk,
-			left_pdata_i     => I2S_LEFT_DATA,
-			right_pdata_i    => I2S_RIGHT_DATA,
+			left_data_i      => I2S_LEFT_DATA,
+			right_data_i     => I2S_RIGHT_DATA,
 			ready_o          => i2s_ready,
 			master_clk_o     => i2s_master_clk,
 			serial_clk_o     => i2s_serial_clk,
