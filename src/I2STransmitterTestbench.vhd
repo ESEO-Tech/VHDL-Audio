@@ -80,7 +80,6 @@ begin
 
     -- Check serial data.
 
-    -- Check clock alignment.
     p_check_alignment : process(i2s_serial_clk, i2s_serial_data, i2s_left_right_clk)
     begin
         if now > 0 ns and i2s_serial_clk'event then
@@ -96,7 +95,7 @@ begin
         end if;
 
         if now > 0 ns and i2s_left_right_clk'event then
-            assert  falling_edge(i2s_serial_clk)
+            assert falling_edge(i2s_serial_clk)
                 report "left_right_clk events are not aligned with falling edges of serial_clk"
                 severity ERROR;
         end if;
