@@ -12,7 +12,7 @@ architecture Simulation of I2STransmitterTestbench is
 	constant CLK_PERIOD                : time := 1 sec / CLK_FREQUENCY_HZ;
 	constant I2S_MASTER_CLK_PERIOD     : time := CLK_PERIOD * (CLK_FREQUENCY_HZ / I2S_MASTER_FREQUENCY_HZ);
 	constant I2S_LEFT_RIGHT_CLK_PERIOD : time := I2S_MASTER_CLK_PERIOD * (I2S_MASTER_FREQUENCY_HZ / I2S_SAMPLE_RATE_HZ);
-	constant I2S_SERIAL_CLOCK_PERIOD   : time := I2S_LEFT_RIGHT_CLOCK_PERIOD / I2S_BITS_PER_SAMPLE / 2;
+	constant I2S_SERIAL_CLK_PERIOD     : time := I2S_LEFT_RIGHT_CLK_PERIOD / I2S_BITS_PER_SAMPLE / 2;
 
 	signal clk                                    : std_logic := '0';
 	signal i2s_ready                              : std_logic;
@@ -61,8 +61,8 @@ begin
 			period := t_high + t_low;
 
 			-- Check master clock period.
-			assert period = I2S_MASTER_CLOCK_PERIOD
-				report "Incorrect period for master_clk: " & time'image(period) & " (expected " & time'image(MASTER_CLOCK_PERIOD) & ")"
+			assert period = I2S_MASTER_CLK_PERIOD
+				report "Incorrect period for master_clk: " & time'image(period) & " (expected " & time'image(I2S_MASTER_CLK_PERIOD) & ")"
 				severity ERROR;
 
 			-- Check master clock duty cycle.
