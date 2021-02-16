@@ -12,5 +12,4 @@ package I2STransmitterTestbench_pkg is
 	constant I2S_RIGHT_DATA                 : signed(I2S_BITS_PER_SAMPLE - 1 downto 0) := "1010001101011100";
     constant I2S_DUTY_CYCLE_MIN             : real                                     := 0.45;
     constant I2S_DUTY_CYCLE_MAX             : real                                     := 0.55;
-    constant I2S_SERIAL_CLK_STABLE_TIME_MIN : time                                     := 20 ns;
 end I2STransmitterTestbench_pkg;
