@@ -12,7 +12,7 @@ all: $(COE)
 %.coe: %.s8 s8_to_coe
 	./s8_to_coe $< $@
 
-s8_to_coe: s8_to_coe.c
+%: %.c
 	gcc -o $@ $<
 
 clean:
