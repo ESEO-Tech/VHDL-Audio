@@ -66,7 +66,7 @@ begin
 			serial_data_o    => i2s_serial_data_o
 		);
 
-	p_address_reg : process(clk_i)
+	p_rom_address_reg : process(clk_i)
 	begin
 		if rising_edge(clk_i) then
 			if i2s_ready = '1' then
@@ -77,7 +77,7 @@ begin
 				end if;
 			end if;
 		end if;
-	end process p_address_reg;
+	end process p_rom_address_reg;
 
     rom_address_slv <= std_logic_vector(to_unsigned(rom_address_reg, rom_address_slv'length));
 
