@@ -69,12 +69,12 @@ begin
 			serial_data_o    => i2s_serial_data_o
 		);
 
-	p_rom_address_reg : process(clk_i, reset_i)
+	p_rom_address_reg : process(clk_i)
 	begin
-        if reset_i = '1' then
-            rom_address_reg <= 0;
-		elsif rising_edge(clk_i) then
-			if i2s_ready = '1' then
+		if rising_edge(clk_i) then
+            if reset_i = '1' then
+                rom_address_reg <= 0;
+			elsif i2s_ready = '1' then
 				if rom_address_reg = ROM_ADDRESS_MAX then
 					rom_address_reg <= 0;
 				else
