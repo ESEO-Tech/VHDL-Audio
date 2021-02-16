@@ -81,24 +81,24 @@ begin
     -- Check serial data.
 
     -- Check clock alignment.
-    process(i2s_serial_clk, i2s_serial_data, i2s_left_right_clk)
+    p_check_alignment : process(i2s_serial_clk, i2s_serial_data, i2s_left_right_clk)
     begin
-        if i2s_serial_clk'event then
+        if now > 0 ns and i2s_serial_clk'event then
             assert falling_edge(i2s_master_clk)
                 report "serial_clk events are not aligned with falling edges of master_clk"
                 severity ERROR;
         end if;
 
-        if i2s_serial_data'event then
+        if now > 0 ns and i2s_serial_data'event then
             assert falling_edge(i2s_serial_clk)
                 report "serial_data events are not aligned with falling edges of serial_clk"
                 severity ERROR;
         end if;
 
-        if i2s_left_right_clk'event then
+        if now > 0 ns and i2s_left_right_clk'event then
             assert  falling_edge(i2s_serial_clk)
                 report "left_right_clk events are not aligned with falling edges of serial_clk"
                 severity ERROR;
         end if;
-    end process;
+    end process p_check_alignment;
 end architecture Simulation;
