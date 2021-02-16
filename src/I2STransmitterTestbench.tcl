@@ -12,8 +12,8 @@ launch_simulation
 restart
 
 # Add waves for signals in I2STransmitter.
-set tbdiv [add_wave_divider -before_wave clk_sim I2STransmitterTestbench]
-set div   [add_wave_divider -before_wave $tbdiv  I2STransmitter]
+set tbdiv [add_wave_divider -before_wave clk    I2STransmitterTestbench]
+set div   [add_wave_divider -before_wave $tbdiv I2STransmitter]
 add_wave -after_wave $div transmitter_inst/*
 
 # Run.
