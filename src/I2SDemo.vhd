@@ -14,6 +14,8 @@ entity I2SDemo is
 end entity I2SDemo;
 
 architecture Structural of I2SDemo is
+    alias reset_i                                : std_logic is btn_center_i;
+
 	constant CLK_FREQUENCY_HZ                    : positive := 100e6;
 	constant I2S_SAMPLE_RATE_HZ                  : positive := 22_050;
 	constant I2S_MASTER_FREQUENCY_HZ             : positive := 256 * I2S_SAMPLE_RATE_HZ;
@@ -22,7 +24,7 @@ architecture Structural of I2SDemo is
 	constant DURATION_SEC                        : positive := 4;
     constant GAIN                                : positive := 64;
 
-    constant ROM_ADDRESS_MAX                     : integer  := DURATION_SEC * I2S_SAMPLE_RATE_HZ - 1;
+    constant ROM_ADDRESS_MAX                     : integer := DURATION_SEC * I2S_SAMPLE_RATE_HZ - 1;
     signal rom_address_reg                       : integer range 0 to ROM_ADDRESS_MAX;
 
 	constant ROM_ADDRESS_WIDTH                   : positive := 17;
@@ -57,6 +59,7 @@ begin
 		)
 		port map(
 			clk_i            => clk_i,
+            reset_i          => reset_i,
 			left_data_i      => i2s_left_data,
 			right_data_i     => i2s_right_data,
 			ready_o          => i2s_ready,
@@ -66,9 +69,11 @@ begin
 			serial_data_o    => i2s_serial_data_o
 		);
 
-	p_rom_address_reg : process(clk_i)
+	p_rom_address_reg : process(clk_i, reset_i)
 	begin
-		if rising_edge(clk_i) then
+        if reset_i = '1' then
+            rom_address_reg <= 0;
+		elsif rising_edge(clk_i) then
 			if i2s_ready = '1' then
 				if rom_address_reg = ROM_ADDRESS_MAX then
 					rom_address_reg <= 0;
