@@ -14,14 +14,16 @@ architecture Simulation of I2STransmitterTestbench is
 	constant I2S_LEFT_RIGHT_CLK_PERIOD : time := I2S_MASTER_CLK_PERIOD * (I2S_MASTER_FREQUENCY_HZ / I2S_SAMPLE_RATE_HZ);
 	constant I2S_SERIAL_CLK_PERIOD     : time := I2S_LEFT_RIGHT_CLK_PERIOD / I2S_BITS_PER_SAMPLE / 2;
 
-	signal clk                         : std_logic := '0';
-	signal i2s_ready                   : std_logic;
-	signal i2s_serial_clk              : std_logic;
-	signal i2s_serial_data             : std_logic;
-	signal i2s_left_right_clk          : std_logic;
-	signal i2s_master_clk              : std_logic;
+	signal clk                : std_logic := '0';
+    signal reset              : std_logic := '1';
+	signal i2s_ready          : std_logic;
+	signal i2s_serial_clk     : std_logic;
+	signal i2s_serial_data    : std_logic;
+	signal i2s_left_right_clk : std_logic;
+	signal i2s_master_clk     : std_logic;
 begin
-	clk <= not clk after CLK_PERIOD / 2;
+	clk   <= not clk  after CLK_PERIOD / 2;
+    reset <= '0'      after CLK_PERIOD;
 
 	transmitter_inst : entity work.I2STransmitter
 		generic map(
@@ -32,6 +34,7 @@ begin
 		)
 		port map(
 			clk_i            => clk,
+            reset_i          => reset,
 			left_data_i      => I2S_LEFT_DATA,
 			right_data_i     => I2S_RIGHT_DATA,
 			ready_o          => i2s_ready,
@@ -80,24 +83,26 @@ begin
 
     -- Check serial data.
 
-    p_check_alignment : process(i2s_serial_clk, i2s_serial_data, i2s_left_right_clk)
+    p_check_alignment : process(reset, i2s_serial_clk, i2s_serial_data, i2s_left_right_clk)
     begin
-        if now > 0 ns and i2s_serial_clk'event then
-            assert falling_edge(i2s_master_clk)
-                report "serial_clk events are not aligned with falling edges of master_clk"
-                severity ERROR;
-        end if;
+        if reset = '0' then
+            if i2s_serial_clk'event then
+                assert falling_edge(i2s_master_clk)
+                    report "serial_clk events are not aligned with falling edges of master_clk"
+                    severity ERROR;
+            end if;
 
-        if now > 0 ns and i2s_serial_data'event then
-            assert falling_edge(i2s_serial_clk)
-                report "serial_data events are not aligned with falling edges of serial_clk"
-                severity ERROR;
-        end if;
+            if i2s_serial_data'event then
+                assert falling_edge(i2s_serial_clk)
+                    report "serial_data events are not aligned with falling edges of serial_clk"
+                    severity ERROR;
+            end if;
 
-        if now > 0 ns and i2s_left_right_clk'event then
-            assert falling_edge(i2s_serial_clk)
-                report "left_right_clk events are not aligned with falling edges of serial_clk"
-                severity ERROR;
+            if i2s_left_right_clk'event then
+                assert falling_edge(i2s_serial_clk)
+                    report "left_right_clk events are not aligned with falling edges of serial_clk"
+                    severity ERROR;
+            end if;
         end if;
     end process p_check_alignment;
 end architecture Simulation;
