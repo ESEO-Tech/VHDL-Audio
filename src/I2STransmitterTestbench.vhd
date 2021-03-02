@@ -1,10 +1,10 @@
 
+entity I2STransmitterTestbench is
+end I2STransmitterTestbench;
+
 library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
-
-entity I2STransmitterTestbench is
-end I2STransmitterTestbench;
 
 use work.I2STransmitterTestbench_pkg.all;
 
