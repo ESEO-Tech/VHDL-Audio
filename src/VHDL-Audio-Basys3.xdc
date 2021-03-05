@@ -7,6 +7,13 @@ set_property PACKAGE_PIN U18     [get_ports btn_center_i]
 set_property IOSTANDARD LVCMOS33 [get_ports btn_*]
 
 # -----------------------------------------------------------------------------
+# LEDs
+# -----------------------------------------------------------------------------
+
+set_property PACKAGE_PIN U16 [get_ports led_o]
+set_property IOSTANDARD LVCMOS33 [get_ports led_o]
+
+# -----------------------------------------------------------------------------
 # Global clock
 # -----------------------------------------------------------------------------
 

@@ -23,7 +23,7 @@ architecture Simulation of I2STransmitterTestbench is
 	signal i2s_master_clk     : std_logic;
 begin
 	clk   <= not clk  after CLK_PERIOD / 2;
-    reset <= '0'      after CLK_PERIOD;
+    reset <= '0' after CLK_PERIOD;
 
 	transmitter_inst : entity work.I2STransmitter
 		generic map(
@@ -35,9 +35,10 @@ begin
 		port map(
 			clk_i            => clk,
             reset_i          => reset,
+            valid_i          => '1',
+            ready_o          => i2s_ready,
 			left_data_i      => I2S_LEFT_DATA,
 			right_data_i     => I2S_RIGHT_DATA,
-			ready_o          => i2s_ready,
 			master_clk_o     => i2s_master_clk,
 			serial_clk_o     => i2s_serial_clk,
 			serial_data_o    => i2s_serial_data,
