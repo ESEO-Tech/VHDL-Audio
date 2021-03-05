@@ -1,3 +1,4 @@
+
 library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
@@ -24,7 +25,6 @@ architecture Structural of VocoderDemo is
 	constant I2S_BITS_PER_SAMPLE                      : positive  := 16;
 	constant ROM_BITS_PER_SAMPLE                      : positive  := 8;
 	constant DURATION_SEC                             : positive  := 4;
-    constant GAIN                                     : positive  := 64;
 
     alias reset_i                                     : std_logic is btn_center_i;
     signal audio_clk                                  : std_logic := '0';
@@ -40,7 +40,6 @@ architecture Structural of VocoderDemo is
 
     signal i2s_ready                                  : std_logic;
     signal i2s_left_data, i2s_right_data              : signed(I2S_BITS_PER_SAMPLE - 1 downto 0);
-    signal i2s_right_data_slv                         : std_logic_vector(ROM_BITS_PER_SAMPLE - 1 downto 0);
 
 	signal vocoder_valid                              : std_logic;
     signal vocoder_data_from_rom, vocoder_data_to_i2s : vocoder_data_t;
@@ -68,7 +67,6 @@ architecture Structural of VocoderDemo is
 			douta : out std_logic_vector(ROM_BITS_PER_SAMPLE - 1 downto 0)
 		);
 	end component;
-
 begin
     audio_clk_inst : AudioClock
         port map(
@@ -117,10 +115,8 @@ begin
             data_o  => vocoder_data_to_i2s
         );
 
-    i2s_right_data_slv <= std_logic_vector(resize(vocoder_data_to_i2s, rom_data_sfx));
-
-	i2s_left_data  <= resize(signed(rom_data)           * GAIN, I2S_BITS_PER_SAMPLE);
-	i2s_right_data <= resize(signed(i2s_right_data_slv) * GAIN, I2S_BITS_PER_SAMPLE);
+    i2s_left_data  <= resize(signed(rom_data),  I2S_BITS_PER_SAMPLE) sll (I2S_BITS_PER_SAMPLE - ROM_BITS_PER_SAMPLE);
+	i2s_right_data <= to_signed(resize(vocoder_data_to_i2s, 1, 2 - I2S_BITS_PER_SAMPLE));
 
     transmitter_inst : entity work.I2STransmitter
 		generic map(

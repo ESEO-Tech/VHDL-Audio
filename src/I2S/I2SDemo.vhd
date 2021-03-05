@@ -1,3 +1,4 @@
+
 library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
@@ -21,7 +22,6 @@ architecture Structural of I2SDemo is
 	constant I2S_BITS_PER_SAMPLE         : positive := 16;
 	constant ROM_BITS_PER_SAMPLE         : positive := 8;
 	constant DURATION_SEC                : positive := 4;
-    constant GAIN                        : positive := 64;
 
     alias reset_i                        : std_logic is btn_center_i;
     signal audio_clk                     : std_logic;
@@ -112,8 +112,8 @@ begin
 			douta => rom_right_data
 		);
 
-	i2s_left_data  <= resize(signed(rom_left_data)  * GAIN, I2S_BITS_PER_SAMPLE);
-	i2s_right_data <= resize(signed(rom_right_data) * GAIN, I2S_BITS_PER_SAMPLE);
+	i2s_left_data  <= resize(signed(rom_left_data),  I2S_BITS_PER_SAMPLE) sll (I2S_BITS_PER_SAMPLE - ROM_BITS_PER_SAMPLE);
+	i2s_right_data <= resize(signed(rom_right_data), I2S_BITS_PER_SAMPLE) sll (I2S_BITS_PER_SAMPLE - ROM_BITS_PER_SAMPLE);
 
     transmitter_inst : entity work.I2STransmitter
 		generic map(

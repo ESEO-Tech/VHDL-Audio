@@ -1,3 +1,4 @@
+
 library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
@@ -22,9 +23,8 @@ architecture Structural of MicrophoneDemo is
     constant I2S_SAMPLE_RATE_HZ      : positive := 20_000;
     constant I2S_MASTER_FREQUENCY_HZ : positive := I2S_SAMPLE_RATE_HZ * 256;
     constant I2S_BITS_PER_SAMPLE     : positive := 16;
-    constant MIC_BITS_PER_SAMPLE     : positive := I2S_BITS_PER_SAMPLE;
+    constant MIC_BITS_PER_SAMPLE     : positive := 12;
 	constant MIC_BIT_RATE_HZ         : positive := AUDIO_CLK_FREQUENCY_HZ / 4;
-    constant GAIN                    : positive := 8;
 
     alias reset_i                    : std_logic is btn_center_i;
     signal audio_clk                 : std_logic;
@@ -70,7 +70,7 @@ begin
 			serial_data_i   => mic_serial_data_i
 		);
 
-	i2s_data <= resize(mic_data * GAIN, I2S_BITS_PER_SAMPLE);
+	i2s_data <= resize(mic_data, I2S_BITS_PER_SAMPLE) sll (I2S_BITS_PER_SAMPLE - MIC_BITS_PER_SAMPLE);
 
 	i2s_inst : entity work.I2STransmitter
 		generic map(
