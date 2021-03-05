@@ -4,7 +4,7 @@ use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 
 entity I2STransmitter is
-	generic (
+    generic (
         -- The general clock frequency, in Hz
         CLK_FREQUENCY_HZ    : positive;
         -- The master clock frequency for audio data processing, in Hz
@@ -35,7 +35,7 @@ entity I2STransmitter is
         serial_data_o    : out std_logic;
         -- The I2S channel selection clock (to the receiver)
         left_right_clk_o : out std_logic
-	);
+    );
 end I2STransmitter;
 
 architecture RTL of I2STransmitter is

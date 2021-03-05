@@ -7,14 +7,14 @@ use work.Vocoder_pkg.all;
 
 entity Mixer is
     port(
-        clk_i          : in std_logic;
-        reset_i        : in std_logic;
-        valid_i        : in std_logic;
+        clk_i          : in  std_logic;
+        reset_i        : in  std_logic;
+        valid_i        : in  std_logic;
         ready_o        : out std_logic;
-        env_data_i     : in vocoder_data_vector_t(0 to CHANNELS - 1);
-        carrier_data_i : in vocoder_coef_vector_t(0 to CHANNELS - 1);
+        env_data_i     : in  vocoder_data_vector_t(0 to CHANNELS - 1);
+        carrier_data_i : in  vocoder_coef_vector_t(0 to CHANNELS - 1);
         valid_o        : out std_logic;
-        ready_i        : in std_logic;
+        ready_i        : in  std_logic;
         data_o         : out vocoder_data_t
     );
 end Mixer;

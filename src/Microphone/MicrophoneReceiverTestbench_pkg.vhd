@@ -14,5 +14,4 @@ package MicrophoneReceiverTestbench_pkg is
     constant MIC_CS_PULSE_MIN    : time                                     := 10 ns;
     constant MIC_CS_TO_SCLK      : time                                     := 10 ns;
     constant MIC_CS_TO_SDATA     : time                                     := 20 ns;
-
 end package MicrophoneReceiverTestbench_pkg;

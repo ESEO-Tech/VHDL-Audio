@@ -7,13 +7,13 @@ use work.Vocoder_pkg.all;
 
 entity Vocoder is
     port(
-        clk_i   : in std_logic;
-        reset_i : in std_logic;
-        valid_i : in std_logic;
+        clk_i   : in  std_logic;
+        reset_i : in  std_logic;
+        valid_i : in  std_logic;
         ready_o : out std_logic;
-        data_i  : in vocoder_data_t;
+        data_i  : in  vocoder_data_t;
         valid_o : out std_logic;
-        ready_i : in std_logic;
+        ready_i : in  std_logic;
         data_o  : out vocoder_data_t
     );
 end Vocoder;
