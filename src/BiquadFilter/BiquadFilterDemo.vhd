@@ -25,7 +25,6 @@ architecture Structural of BiquadFilterDemo is
     constant I2S_BITS_PER_SAMPLE                    : positive := 16;
     constant ROM_BITS_PER_SAMPLE                    : positive := 8;
     constant DURATION_SEC                           : positive := 4;
-    constant FILTER_CHANNEL                         : integer  := 2;
 
     alias reset_i                                   : std_logic is btn_center_i;
     signal audio_clk                                : std_logic;
@@ -106,11 +105,11 @@ begin
 
     filter_inst : entity work.BiquadFilter
         generic map(
-            A1 => BANDPASS_A1(FILTER_CHANNEL),
-            A2 => BANDPASS_A2(FILTER_CHANNEL),
-            B0 => BANDPASS_B0(FILTER_CHANNEL),
-            B1 => BANDPASS_B1(FILTER_CHANNEL),
-            B2 => BANDPASS_B2(FILTER_CHANNEL)
+            A1 => "100000010110111110",
+            A2 => "001111101001010010",
+            B0 => "000000000000101101",
+            B1 => "000000000001011011",
+            B2 => "000000000000101110"
         )
         port map(
             clk_i   => audio_clk,
