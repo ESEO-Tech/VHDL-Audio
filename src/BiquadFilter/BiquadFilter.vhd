@@ -23,8 +23,8 @@ end BiquadFilter;
 
 architecture RTL of BiquadFilter is
     type state_t is (READY_STATE, FORWARD_STATE, FEEDBACK_STATE, VALID_STATE);
-    signal state_reg                    : state_t;
-    signal x_reg, y_reg, z1_reg, z2_reg : biquad_data_t;
+    signal state_reg : state_t;
+    signal x_reg, y_reg, w_reg, v_reg : biquad_data_t;
 begin
     -- Concurrent statements.
 end RTL;

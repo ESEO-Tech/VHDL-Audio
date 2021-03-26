@@ -29,12 +29,10 @@ begin
     end process p_osc_ready;
 
     osc_inst : entity work.Oscillator
-        generic map(
-            STEP => OSC_STEP
-        )
         port map(
             clk_i   => clk,
             reset_i => reset,
+            step_i  => OSC_STEP,
             ready_i => osc_ready,
             data_o  => osc_data
         );

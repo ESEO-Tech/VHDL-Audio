@@ -1,5 +1,7 @@
 *.jou
 *.log
 *.str
+*.o
+*.cf
 .Xil
 vivado/VHDL-Audio

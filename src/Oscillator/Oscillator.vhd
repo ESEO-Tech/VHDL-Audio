@@ -6,12 +6,10 @@ use work.fixed_pkg.all;
 use work.Vocoder_pkg.all;
 
 entity Oscillator is
-    generic(
-        STEP : positive
-    );
     port(
         clk_i   : in  std_logic;
         reset_i : in  std_logic;
+        step_i  : in  natural range 0 to SINE_INDEX_MAX;
         ready_i : in  std_logic;
         data_o  : out vocoder_coef_t
     );
