@@ -215,7 +215,7 @@ begin
   -- I2STransmitter.vhd:65:12
   data_reg <= n118_q; -- (signal)
   -- I2STransmitter.vhd:75:15
-  n6_o <= '1' when rising_edge (wrap_clk_i) else '0';
+  -- n6_o <= '1' when rising_edge (wrap_clk_i) else '0';
   -- I2STransmitter.vhd:79:54
   n7_o <= "0000000000000000000000000000" & master_timer_reg;  --  uext
   -- I2STransmitter.vhd:79:54
@@ -242,7 +242,7 @@ begin
   -- I2STransmitter.vhd:85:38
   n23_o <= '1' when n21_o = "00000000000000000000000000001001" else '0';
   -- I2STransmitter.vhd:91:15
-  n25_o <= '1' when rising_edge (wrap_clk_i) else '0';
+  -- n25_o <= '1' when rising_edge (wrap_clk_i) else '0';
   -- I2STransmitter.vhd:92:28
   n26_o <= master_half or master_cycle;
   -- I2STransmitter.vhd:93:35
@@ -259,7 +259,7 @@ begin
     end if;
   end process;
   -- I2STransmitter.vhd:108:15
-  n36_o <= '1' when rising_edge (wrap_clk_i) else '0';
+  -- n36_o <= '1' when rising_edge (wrap_clk_i) else '0';
   -- I2STransmitter.vhd:112:54
   n37_o <= "00000000000000000000000000000" & serial_timer_reg;  --  uext
   -- I2STransmitter.vhd:112:54
@@ -292,7 +292,7 @@ begin
   -- I2STransmitter.vhd:118:34
   n56_o <= master_cycle and n55_o;
   -- I2STransmitter.vhd:124:15
-  n58_o <= '1' when rising_edge (wrap_clk_i) else '0';
+  -- n58_o <= '1' when rising_edge (wrap_clk_i) else '0';
   -- I2STransmitter.vhd:125:28
   n59_o <= serial_half or serial_cycle;
   -- I2STransmitter.vhd:126:35
@@ -309,7 +309,7 @@ begin
     end if;
   end process;
   -- I2STransmitter.vhd:139:12
-  n69_o <= '1' when rising_edge (wrap_clk_i) else '0';
+  -- n69_o <= '1' when rising_edge (wrap_clk_i) else '0';
   -- I2STransmitter.vhd:143:34
   n70_o <= "000000000000000000000000000" & bit_index_reg;  --  uext
   -- I2STransmitter.vhd:143:34
@@ -346,7 +346,7 @@ begin
   -- I2STransmitter.vhd:153:38
   n92_o <= serial_cycle and n91_o;
   -- I2STransmitter.vhd:159:15
-  n94_o <= '1' when rising_edge (wrap_clk_i) else '0';
+  -- n94_o <= '1' when rising_edge (wrap_clk_i) else '0';
   -- I2STransmitter.vhd:160:32
   n95_o <= left_right_half or left_right_cycle;
   -- I2STransmitter.vhd:161:39
@@ -363,7 +363,7 @@ begin
     end if;
   end process;
   -- I2STransmitter.vhd:176:15
-  n105_o <= '1' when rising_edge (wrap_clk_i) else '0';
+  -- n105_o <= '1' when rising_edge (wrap_clk_i) else '0';
   -- I2STransmitter.vhd:177:47
   n106_o <= "000000000000000000000000000" & bit_index_reg;  --  uext
   -- I2STransmitter.vhd:177:47
