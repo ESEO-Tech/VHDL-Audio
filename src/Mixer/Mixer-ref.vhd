@@ -284,7 +284,7 @@ begin
   -- Mixer.vhd:26:12
   data_reg <= n355_q; -- (signal)
   -- Mixer.vhd:32:15
-  n4_o <= '1' when rising_edge (wrap_clk_i) else '0';
+  -- n4_o <= '1' when rising_edge (wrap_clk_i) else '0';
   -- Mixer.vhd:35:21
   n6_o <= state_reg when wrap_valid_i = '0' else "01";
   -- Mixer.vhd:34:17
@@ -326,7 +326,7 @@ begin
   -- Mixer.vhd:51:20
   n36_o <= '0' when n35_o = '0' else '1';
   -- Mixer.vhd:57:15
-  n39_o <= '1' when rising_edge (wrap_clk_i) else '0';
+  -- n39_o <= '1' when rising_edge (wrap_clk_i) else '0';
   -- Mixer.vhd:60:21
   n41_o <= channel_reg when wrap_valid_i = '0' else "0001";
   -- Mixer.vhd:59:17
@@ -361,7 +361,7 @@ begin
     end if;
   end process;
   -- Mixer.vhd:78:15
-  n63_o <= '1' when rising_edge (wrap_clk_i) else '0';
+  -- n63_o <= '1' when rising_edge (wrap_clk_i) else '0';
   -- Mixer.vhd:79:27
   n65_o <= '1' when state_reg = "00" else '0';
   -- Mixer.vhd:79:41

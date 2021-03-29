@@ -122,7 +122,7 @@ begin
   -- Oscillator.vhd:20:12
   index_reg <= n57_q; -- (signal)
   -- Oscillator.vhd:29:15
-  n3_o <= '1' when rising_edge (wrap_clk_i) else '0';
+  -- n3_o <= '1' when rising_edge (wrap_clk_i) else '0';
   -- Oscillator.vhd:32:45
   n4_o <= "000000000000000000000000000" & index_reg;  --  uext
   -- Oscillator.vhd:32:45
@@ -211,7 +211,7 @@ begin
     end if;
   end process;
   -- Oscillator.vhd:52:12
-  n63_o <= '1' when rising_edge (wrap_clk_i) else '0';
+  -- n63_o <= '1' when rising_edge (wrap_clk_i) else '0';
   -- Oscillator.vhd:53:25
   n64_o <= not sign_reg;
   -- Oscillator.vhd:54:37

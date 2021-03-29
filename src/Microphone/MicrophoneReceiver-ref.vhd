@@ -122,7 +122,7 @@ begin
   -- MicrophoneReceiver.vhd:53:12
   data_reg <= n115_q; -- (isignal)
   -- MicrophoneReceiver.vhd:63:15
-  n6_o <= '1' when rising_edge (wrap_clk_i) else '0';
+  -- n6_o <= '1' when rising_edge (wrap_clk_i) else '0';
   -- MicrophoneReceiver.vhd:65:17
   n8_o <= '1' when state_reg = "00" else '0';
   -- MicrophoneReceiver.vhd:68:55
@@ -164,7 +164,7 @@ begin
   -- MicrophoneReceiver.vhd:80:28
   n38_o <= '0' when n37_o = '0' else '1';
   -- MicrophoneReceiver.vhd:90:15
-  n41_o <= '1' when rising_edge (wrap_clk_i) else '0';
+  -- n41_o <= '1' when rising_edge (wrap_clk_i) else '0';
   -- MicrophoneReceiver.vhd:91:26
   n43_o <= '1' when state_reg = "01" else '0';
   -- MicrophoneReceiver.vhd:95:58
@@ -195,7 +195,7 @@ begin
   -- MicrophoneReceiver.vhd:102:38
   n62_o <= '1' when n60_o = "00000000000000000000000000000011" else '0';
   -- MicrophoneReceiver.vhd:108:15
-  n64_o <= '1' when rising_edge (wrap_clk_i) else '0';
+  -- n64_o <= '1' when rising_edge (wrap_clk_i) else '0';
   -- MicrophoneReceiver.vhd:109:28
   n65_o <= serial_half or serial_cycle;
   -- MicrophoneReceiver.vhd:110:35
@@ -212,7 +212,7 @@ begin
     end if;
   end process;
   -- MicrophoneReceiver.vhd:125:15
-  n75_o <= '1' when rising_edge (wrap_clk_i) else '0';
+  -- n75_o <= '1' when rising_edge (wrap_clk_i) else '0';
   -- MicrophoneReceiver.vhd:127:34
   n76_o <= "0000000000000000000000000000" & bit_index_reg;  --  uext
   -- MicrophoneReceiver.vhd:127:34
@@ -237,7 +237,7 @@ begin
     end if;
   end process;
   -- MicrophoneReceiver.vhd:141:15
-  n94_o <= '1' when rising_edge (wrap_clk_i) else '0';
+  -- n94_o <= '1' when rising_edge (wrap_clk_i) else '0';
   -- MicrophoneReceiver.vhd:142:47
   n95_o <= "0000000000000000000000000000" & bit_index_reg;  --  uext
   -- MicrophoneReceiver.vhd:142:47

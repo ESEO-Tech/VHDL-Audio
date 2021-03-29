@@ -252,7 +252,7 @@ begin
   -- ../Mixer/Mixer.vhd:26:12
   data_reg <= n17923_q; -- (signal)
   -- ../Mixer/Mixer.vhd:32:15
-  n17572_o <= '1' when rising_edge (clk_i) else '0';
+  -- n17572_o <= '1' when rising_edge (clk_i) else '0';
   -- ../Mixer/Mixer.vhd:35:21
   n17574_o <= state_reg when valid_i = '0' else "01";
   -- ../Mixer/Mixer.vhd:34:17
@@ -295,7 +295,7 @@ begin
   -- ../Mixer/Mixer.vhd:51:20
   n17604_o <= '0' when n17603_o = '0' else '1';
   -- ../Mixer/Mixer.vhd:57:15
-  n17607_o <= '1' when rising_edge (clk_i) else '0';
+  -- n17607_o <= '1' when rising_edge (clk_i) else '0';
   -- ../Mixer/Mixer.vhd:60:21
   n17609_o <= channel_reg when valid_i = '0' else "0001";
   -- ../Mixer/Mixer.vhd:59:17
@@ -331,7 +331,7 @@ begin
     end if;
   end process;
   -- ../Mixer/Mixer.vhd:78:15
-  n17631_o <= '1' when rising_edge (clk_i) else '0';
+  -- n17631_o <= '1' when rising_edge (clk_i) else '0';
   -- ../Mixer/Mixer.vhd:79:27
   n17633_o <= '1' when state_reg = "00" else '0';
   -- ../Mixer/Mixer.vhd:79:41
@@ -1350,7 +1350,7 @@ begin
   -- ../BiquadFilter/BiquadFilter.vhd:27:33
   v_reg <= n17479_q; -- (signal)
   -- ../BiquadFilter/BiquadFilter.vhd:33:15
-  n16336_o <= '1' when rising_edge (clk_i) else '0';
+  -- n16336_o <= '1' when rising_edge (clk_i) else '0';
   -- ../BiquadFilter/BiquadFilter.vhd:36:21
   n16338_o <= state_reg when valid_i = '0' else "01";
   -- ../BiquadFilter/BiquadFilter.vhd:35:17
@@ -1390,7 +1390,7 @@ begin
   -- ../BiquadFilter/BiquadFilter.vhd:52:20
   n16367_o <= '0' when n16366_o = '0' else '1';
   -- ../BiquadFilter/BiquadFilter.vhd:59:15
-  n16370_o <= '1' when rising_edge (clk_i) else '0';
+  -- n16370_o <= '1' when rising_edge (clk_i) else '0';
   -- ../fixed_pkg.vhd:168:39
   n16386_o <= std_logic_vector (resize (signed (data_i), 20));  --  sext
   -- ../fixed_pkg.vhd:173:9
@@ -3159,7 +3159,7 @@ begin
   -- ../BiquadFilter/BiquadFilter.vhd:27:33
   v_reg <= n16243_q; -- (signal)
   -- ../BiquadFilter/BiquadFilter.vhd:33:15
-  n15100_o <= '1' when rising_edge (clk_i) else '0';
+  -- n15100_o <= '1' when rising_edge (clk_i) else '0';
   -- ../BiquadFilter/BiquadFilter.vhd:36:21
   n15102_o <= state_reg when valid_i = '0' else "01";
   -- ../BiquadFilter/BiquadFilter.vhd:35:17
@@ -3199,7 +3199,7 @@ begin
   -- ../BiquadFilter/BiquadFilter.vhd:52:20
   n15131_o <= '0' when n15130_o = '0' else '1';
   -- ../BiquadFilter/BiquadFilter.vhd:59:15
-  n15134_o <= '1' when rising_edge (clk_i) else '0';
+  -- n15134_o <= '1' when rising_edge (clk_i) else '0';
   -- ../fixed_pkg.vhd:168:39
   n15150_o <= std_logic_vector (resize (signed (data_i), 20));  --  sext
   -- ../fixed_pkg.vhd:173:9
@@ -4968,7 +4968,7 @@ begin
   -- ../BiquadFilter/BiquadFilter.vhd:27:33
   v_reg <= n15007_q; -- (signal)
   -- ../BiquadFilter/BiquadFilter.vhd:33:15
-  n13864_o <= '1' when rising_edge (clk_i) else '0';
+  -- n13864_o <= '1' when rising_edge (clk_i) else '0';
   -- ../BiquadFilter/BiquadFilter.vhd:36:21
   n13866_o <= state_reg when valid_i = '0' else "01";
   -- ../BiquadFilter/BiquadFilter.vhd:35:17
@@ -5008,7 +5008,7 @@ begin
   -- ../BiquadFilter/BiquadFilter.vhd:52:20
   n13895_o <= '0' when n13894_o = '0' else '1';
   -- ../BiquadFilter/BiquadFilter.vhd:59:15
-  n13898_o <= '1' when rising_edge (clk_i) else '0';
+  -- n13898_o <= '1' when rising_edge (clk_i) else '0';
   -- ../fixed_pkg.vhd:168:39
   n13914_o <= std_logic_vector (resize (signed (data_i), 20));  --  sext
   -- ../fixed_pkg.vhd:173:9
@@ -6777,7 +6777,7 @@ begin
   -- ../BiquadFilter/BiquadFilter.vhd:27:33
   v_reg <= n13771_q; -- (signal)
   -- ../BiquadFilter/BiquadFilter.vhd:33:15
-  n12628_o <= '1' when rising_edge (clk_i) else '0';
+  -- n12628_o <= '1' when rising_edge (clk_i) else '0';
   -- ../BiquadFilter/BiquadFilter.vhd:36:21
   n12630_o <= state_reg when valid_i = '0' else "01";
   -- ../BiquadFilter/BiquadFilter.vhd:35:17
@@ -6817,7 +6817,7 @@ begin
   -- ../BiquadFilter/BiquadFilter.vhd:52:20
   n12659_o <= '0' when n12658_o = '0' else '1';
   -- ../BiquadFilter/BiquadFilter.vhd:59:15
-  n12662_o <= '1' when rising_edge (clk_i) else '0';
+  -- n12662_o <= '1' when rising_edge (clk_i) else '0';
   -- ../fixed_pkg.vhd:168:39
   n12678_o <= std_logic_vector (resize (signed (data_i), 20));  --  sext
   -- ../fixed_pkg.vhd:173:9
@@ -8586,7 +8586,7 @@ begin
   -- ../BiquadFilter/BiquadFilter.vhd:27:33
   v_reg <= n12535_q; -- (signal)
   -- ../BiquadFilter/BiquadFilter.vhd:33:15
-  n11392_o <= '1' when rising_edge (clk_i) else '0';
+  -- n11392_o <= '1' when rising_edge (clk_i) else '0';
   -- ../BiquadFilter/BiquadFilter.vhd:36:21
   n11394_o <= state_reg when valid_i = '0' else "01";
   -- ../BiquadFilter/BiquadFilter.vhd:35:17
@@ -8626,7 +8626,7 @@ begin
   -- ../BiquadFilter/BiquadFilter.vhd:52:20
   n11423_o <= '0' when n11422_o = '0' else '1';
   -- ../BiquadFilter/BiquadFilter.vhd:59:15
-  n11426_o <= '1' when rising_edge (clk_i) else '0';
+  -- n11426_o <= '1' when rising_edge (clk_i) else '0';
   -- ../fixed_pkg.vhd:168:39
   n11442_o <= std_logic_vector (resize (signed (data_i), 20));  --  sext
   -- ../fixed_pkg.vhd:173:9
@@ -10395,7 +10395,7 @@ begin
   -- ../BiquadFilter/BiquadFilter.vhd:27:33
   v_reg <= n11299_q; -- (signal)
   -- ../BiquadFilter/BiquadFilter.vhd:33:15
-  n10156_o <= '1' when rising_edge (clk_i) else '0';
+  -- n10156_o <= '1' when rising_edge (clk_i) else '0';
   -- ../BiquadFilter/BiquadFilter.vhd:36:21
   n10158_o <= state_reg when valid_i = '0' else "01";
   -- ../BiquadFilter/BiquadFilter.vhd:35:17
@@ -10435,7 +10435,7 @@ begin
   -- ../BiquadFilter/BiquadFilter.vhd:52:20
   n10187_o <= '0' when n10186_o = '0' else '1';
   -- ../BiquadFilter/BiquadFilter.vhd:59:15
-  n10190_o <= '1' when rising_edge (clk_i) else '0';
+  -- n10190_o <= '1' when rising_edge (clk_i) else '0';
   -- ../fixed_pkg.vhd:168:39
   n10206_o <= std_logic_vector (resize (signed (data_i), 20));  --  sext
   -- ../fixed_pkg.vhd:173:9
@@ -12204,7 +12204,7 @@ begin
   -- ../BiquadFilter/BiquadFilter.vhd:27:33
   v_reg <= n10063_q; -- (signal)
   -- ../BiquadFilter/BiquadFilter.vhd:33:15
-  n8920_o <= '1' when rising_edge (clk_i) else '0';
+  -- n8920_o <= '1' when rising_edge (clk_i) else '0';
   -- ../BiquadFilter/BiquadFilter.vhd:36:21
   n8922_o <= state_reg when valid_i = '0' else "01";
   -- ../BiquadFilter/BiquadFilter.vhd:35:17
@@ -12244,7 +12244,7 @@ begin
   -- ../BiquadFilter/BiquadFilter.vhd:52:20
   n8951_o <= '0' when n8950_o = '0' else '1';
   -- ../BiquadFilter/BiquadFilter.vhd:59:15
-  n8954_o <= '1' when rising_edge (clk_i) else '0';
+  -- n8954_o <= '1' when rising_edge (clk_i) else '0';
   -- ../fixed_pkg.vhd:168:39
   n8970_o <= std_logic_vector (resize (signed (data_i), 20));  --  sext
   -- ../fixed_pkg.vhd:173:9
@@ -14013,7 +14013,7 @@ begin
   -- ../BiquadFilter/BiquadFilter.vhd:27:33
   v_reg <= n8827_q; -- (signal)
   -- ../BiquadFilter/BiquadFilter.vhd:33:15
-  n7684_o <= '1' when rising_edge (clk_i) else '0';
+  -- n7684_o <= '1' when rising_edge (clk_i) else '0';
   -- ../BiquadFilter/BiquadFilter.vhd:36:21
   n7686_o <= state_reg when valid_i = '0' else "01";
   -- ../BiquadFilter/BiquadFilter.vhd:35:17
@@ -14053,7 +14053,7 @@ begin
   -- ../BiquadFilter/BiquadFilter.vhd:52:20
   n7715_o <= '0' when n7714_o = '0' else '1';
   -- ../BiquadFilter/BiquadFilter.vhd:59:15
-  n7718_o <= '1' when rising_edge (clk_i) else '0';
+  -- n7718_o <= '1' when rising_edge (clk_i) else '0';
   -- ../fixed_pkg.vhd:168:39
   n7734_o <= std_logic_vector (resize (signed (data_i), 20));  --  sext
   -- ../fixed_pkg.vhd:173:9
@@ -15822,7 +15822,7 @@ begin
   -- ../BiquadFilter/BiquadFilter.vhd:27:33
   v_reg <= n7591_q; -- (signal)
   -- ../BiquadFilter/BiquadFilter.vhd:33:15
-  n6448_o <= '1' when rising_edge (clk_i) else '0';
+  -- n6448_o <= '1' when rising_edge (clk_i) else '0';
   -- ../BiquadFilter/BiquadFilter.vhd:36:21
   n6450_o <= state_reg when valid_i = '0' else "01";
   -- ../BiquadFilter/BiquadFilter.vhd:35:17
@@ -15862,7 +15862,7 @@ begin
   -- ../BiquadFilter/BiquadFilter.vhd:52:20
   n6479_o <= '0' when n6478_o = '0' else '1';
   -- ../BiquadFilter/BiquadFilter.vhd:59:15
-  n6482_o <= '1' when rising_edge (clk_i) else '0';
+  -- n6482_o <= '1' when rising_edge (clk_i) else '0';
   -- ../fixed_pkg.vhd:168:39
   n6498_o <= std_logic_vector (resize (signed (data_i), 20));  --  sext
   -- ../fixed_pkg.vhd:173:9
@@ -17631,7 +17631,7 @@ begin
   -- ../BiquadFilter/BiquadFilter.vhd:27:33
   v_reg <= n6355_q; -- (signal)
   -- ../BiquadFilter/BiquadFilter.vhd:33:15
-  n5212_o <= '1' when rising_edge (clk_i) else '0';
+  -- n5212_o <= '1' when rising_edge (clk_i) else '0';
   -- ../BiquadFilter/BiquadFilter.vhd:36:21
   n5214_o <= state_reg when valid_i = '0' else "01";
   -- ../BiquadFilter/BiquadFilter.vhd:35:17
@@ -17671,7 +17671,7 @@ begin
   -- ../BiquadFilter/BiquadFilter.vhd:52:20
   n5243_o <= '0' when n5242_o = '0' else '1';
   -- ../BiquadFilter/BiquadFilter.vhd:59:15
-  n5246_o <= '1' when rising_edge (clk_i) else '0';
+  -- n5246_o <= '1' when rising_edge (clk_i) else '0';
   -- ../fixed_pkg.vhd:168:39
   n5262_o <= std_logic_vector (resize (signed (data_i), 20));  --  sext
   -- ../fixed_pkg.vhd:173:9
@@ -19439,7 +19439,7 @@ begin
   -- ../BiquadFilter/BiquadFilter.vhd:27:33
   v_reg <= n5119_q; -- (signal)
   -- ../BiquadFilter/BiquadFilter.vhd:33:15
-  n3976_o <= '1' when rising_edge (clk_i) else '0';
+  -- n3976_o <= '1' when rising_edge (clk_i) else '0';
   -- ../BiquadFilter/BiquadFilter.vhd:36:21
   n3978_o <= state_reg when valid_i = '0' else "01";
   -- ../BiquadFilter/BiquadFilter.vhd:35:17
@@ -19479,7 +19479,7 @@ begin
   -- ../BiquadFilter/BiquadFilter.vhd:52:20
   n4007_o <= '0' when n4006_o = '0' else '1';
   -- ../BiquadFilter/BiquadFilter.vhd:59:15
-  n4010_o <= '1' when rising_edge (clk_i) else '0';
+  -- n4010_o <= '1' when rising_edge (clk_i) else '0';
   -- ../fixed_pkg.vhd:168:39
   n4026_o <= std_logic_vector (resize (signed (data_i), 20));  --  sext
   -- ../fixed_pkg.vhd:173:9
@@ -20739,7 +20739,7 @@ begin
   -- ../Oscillator/Oscillator.vhd:20:12
   index_reg <= n3861_q; -- (signal)
   -- ../Oscillator/Oscillator.vhd:29:15
-  n3807_o <= '1' when rising_edge (clk_i) else '0';
+  -- n3807_o <= '1' when rising_edge (clk_i) else '0';
   -- ../Oscillator/Oscillator.vhd:32:45
   n3808_o <= "000000000000000000000000000" & index_reg;  --  uext
   -- ../Oscillator/Oscillator.vhd:32:45
@@ -20828,7 +20828,7 @@ begin
     end if;
   end process;
   -- ../Oscillator/Oscillator.vhd:52:12
-  n3867_o <= '1' when rising_edge (clk_i) else '0';
+  -- n3867_o <= '1' when rising_edge (clk_i) else '0';
   -- ../Oscillator/Oscillator.vhd:53:25
   n3868_o <= not sign_reg;
   -- ../Oscillator/Oscillator.vhd:54:37
@@ -21615,7 +21615,7 @@ begin
   -- ../BiquadFilter/BiquadFilter.vhd:27:33
   v_reg <= n3715_q; -- (signal)
   -- ../BiquadFilter/BiquadFilter.vhd:33:15
-  n2572_o <= '1' when rising_edge (clk_i) else '0';
+  -- n2572_o <= '1' when rising_edge (clk_i) else '0';
   -- ../BiquadFilter/BiquadFilter.vhd:36:21
   n2574_o <= state_reg when valid_i = '0' else "01";
   -- ../BiquadFilter/BiquadFilter.vhd:35:17
@@ -21655,7 +21655,7 @@ begin
   -- ../BiquadFilter/BiquadFilter.vhd:52:20
   n2603_o <= '0' when n2602_o = '0' else '1';
   -- ../BiquadFilter/BiquadFilter.vhd:59:15
-  n2606_o <= '1' when rising_edge (clk_i) else '0';
+  -- n2606_o <= '1' when rising_edge (clk_i) else '0';
   -- ../fixed_pkg.vhd:168:39
   n2622_o <= std_logic_vector (resize (signed (data_i), 20));  --  sext
   -- ../fixed_pkg.vhd:173:9
@@ -23429,7 +23429,7 @@ begin
   -- ../BiquadFilter/BiquadFilter.vhd:27:33
   v_reg <= n2479_q; -- (signal)
   -- ../BiquadFilter/BiquadFilter.vhd:33:15
-  n1336_o <= '1' when rising_edge (clk_i) else '0';
+  -- n1336_o <= '1' when rising_edge (clk_i) else '0';
   -- ../BiquadFilter/BiquadFilter.vhd:36:21
   n1338_o <= state_reg when valid_i = '0' else "01";
   -- ../BiquadFilter/BiquadFilter.vhd:35:17
@@ -23469,7 +23469,7 @@ begin
   -- ../BiquadFilter/BiquadFilter.vhd:52:20
   n1367_o <= '0' when n1366_o = '0' else '1';
   -- ../BiquadFilter/BiquadFilter.vhd:59:15
-  n1370_o <= '1' when rising_edge (clk_i) else '0';
+  -- n1370_o <= '1' when rising_edge (clk_i) else '0';
   -- ../fixed_pkg.vhd:168:39
   n1386_o <= std_logic_vector (resize (signed (data_i), 20));  --  sext
   -- ../fixed_pkg.vhd:173:9
