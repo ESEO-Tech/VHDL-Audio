@@ -36,7 +36,6 @@ architecture rtl of mixer is
   signal state_reg : std_logic_vector (1 downto 0);
   signal channel_reg : std_logic_vector (3 downto 0);
   signal data_reg : std_logic_vector (17 downto 0);
-  signal n4_o : std_logic;
   signal n6_o : std_logic_vector (1 downto 0);
   signal n8_o : std_logic;
   signal n9_o : std_logic_vector (31 downto 0);
@@ -52,7 +51,6 @@ architecture rtl of mixer is
   signal n31_o : std_logic;
   signal n35_o : std_logic;
   signal n36_o : std_logic;
-  signal n39_o : std_logic;
   signal n41_o : std_logic_vector (3 downto 0);
   signal n43_o : std_logic;
   signal n44_o : std_logic_vector (31 downto 0);
@@ -65,7 +63,6 @@ architecture rtl of mixer is
   signal n55_o : std_logic_vector (1 downto 0);
   signal n56_o : std_logic_vector (3 downto 0);
   signal n61_q : std_logic_vector (3 downto 0);
-  signal n63_o : std_logic;
   signal n65_o : std_logic;
   signal n66_o : std_logic;
   signal n68_o : std_logic;
@@ -76,28 +73,43 @@ architecture rtl of mixer is
   signal n96_o : std_logic_vector (35 downto 0);
   signal n97_o : std_logic_vector (35 downto 0);
   signal n114_o : std_logic_vector (20 downto 0);
-  signal n120_o : std_logic;
-  signal n121_o : std_logic;
-  signal n124_o : std_logic;
-  signal n125_o : std_logic;
-  constant n127_o : std_logic_vector (36 downto 0) := "0000000000000000000000000000000000000";
-  signal n128_o : std_logic_vector (15 downto 0);
-  signal n129_o : std_logic_vector (36 downto 0);
-  signal n140_o : std_logic_vector (36 downto 0);
-  signal n146_o : std_logic;
-  signal n147_o : std_logic;
-  signal n150_o : std_logic;
-  signal n151_o : std_logic;
-  signal n164_o : std_logic_vector (36 downto 0);
-  signal n175_o : std_logic_vector (35 downto 0);
+  constant n118_o : std_logic_vector (36 downto 0) := "0000000000000000000000000000000000000";
+  signal n119_o : std_logic_vector (15 downto 0);
+  signal n120_o : std_logic_vector (36 downto 0);
+  signal n131_o : std_logic_vector (36 downto 0);
+  signal n146_o : std_logic_vector (36 downto 0);
+  signal n157_o : std_logic_vector (35 downto 0);
+  signal n158_o : std_logic;
+  signal n162_o : std_logic;
+  signal n163_o : std_logic;
+  signal n170_o : std_logic;
   signal n176_o : std_logic;
+  signal n177_o : std_logic;
+  signal n178_o : std_logic;
+  signal n179_o : std_logic;
+  signal n180_o : std_logic;
   signal n181_o : std_logic;
   signal n182_o : std_logic;
+  signal n183_o : std_logic;
+  signal n184_o : std_logic;
   signal n185_o : std_logic;
   signal n186_o : std_logic;
+  signal n187_o : std_logic;
+  signal n188_o : std_logic;
   signal n189_o : std_logic;
   signal n190_o : std_logic;
+  signal n191_o : std_logic;
+  signal n192_o : std_logic;
+  signal n193_o : std_logic;
+  signal n194_o : std_logic;
+  signal n195_o : std_logic;
+  signal n196_o : std_logic;
   signal n197_o : std_logic;
+  signal n198_o : std_logic;
+  signal n199_o : std_logic;
+  signal n200_o : std_logic;
+  signal n201_o : std_logic;
+  signal n202_o : std_logic;
   signal n203_o : std_logic;
   signal n204_o : std_logic;
   signal n205_o : std_logic;
@@ -107,141 +119,110 @@ architecture rtl of mixer is
   signal n209_o : std_logic;
   signal n210_o : std_logic;
   signal n211_o : std_logic;
-  signal n212_o : std_logic;
-  signal n213_o : std_logic;
-  signal n214_o : std_logic;
-  signal n215_o : std_logic;
-  signal n216_o : std_logic;
-  signal n217_o : std_logic;
-  signal n218_o : std_logic;
-  signal n219_o : std_logic;
-  signal n220_o : std_logic;
-  signal n221_o : std_logic;
-  signal n222_o : std_logic;
-  signal n223_o : std_logic;
-  signal n224_o : std_logic;
-  signal n225_o : std_logic;
-  signal n226_o : std_logic;
-  signal n227_o : std_logic;
-  signal n228_o : std_logic;
-  signal n229_o : std_logic;
-  signal n230_o : std_logic;
-  signal n231_o : std_logic;
-  signal n232_o : std_logic;
-  signal n233_o : std_logic;
-  signal n234_o : std_logic;
-  signal n235_o : std_logic;
-  signal n236_o : std_logic;
-  signal n237_o : std_logic;
-  signal n238_o : std_logic;
-  signal n239_o : std_logic_vector (3 downto 0);
-  signal n240_o : std_logic_vector (3 downto 0);
-  signal n241_o : std_logic_vector (3 downto 0);
-  signal n242_o : std_logic_vector (3 downto 0);
-  signal n243_o : std_logic_vector (3 downto 0);
-  signal n244_o : std_logic_vector (3 downto 0);
-  signal n245_o : std_logic_vector (3 downto 0);
-  signal n246_o : std_logic_vector (3 downto 0);
-  signal n247_o : std_logic_vector (3 downto 0);
-  signal n248_o : std_logic_vector (15 downto 0);
-  signal n249_o : std_logic_vector (15 downto 0);
-  signal n250_o : std_logic_vector (35 downto 0);
-  signal n251_o : std_logic_vector (34 downto 0);
-  signal n252_o : std_logic_vector (35 downto 0);
-  signal n253_o : std_logic_vector (35 downto 0);
-  signal n269_o : std_logic_vector (33 downto 0);
+  signal n212_o : std_logic_vector (3 downto 0);
+  signal n213_o : std_logic_vector (3 downto 0);
+  signal n214_o : std_logic_vector (3 downto 0);
+  signal n215_o : std_logic_vector (3 downto 0);
+  signal n216_o : std_logic_vector (3 downto 0);
+  signal n217_o : std_logic_vector (3 downto 0);
+  signal n218_o : std_logic_vector (3 downto 0);
+  signal n219_o : std_logic_vector (3 downto 0);
+  signal n220_o : std_logic_vector (3 downto 0);
+  signal n221_o : std_logic_vector (15 downto 0);
+  signal n222_o : std_logic_vector (15 downto 0);
+  signal n223_o : std_logic_vector (35 downto 0);
+  signal n224_o : std_logic_vector (34 downto 0);
+  signal n225_o : std_logic_vector (35 downto 0);
+  signal n226_o : std_logic_vector (35 downto 0);
+  signal n242_o : std_logic_vector (33 downto 0);
+  signal n243_o : std_logic;
+  signal n247_o : std_logic;
+  signal n248_o : std_logic;
+  signal n255_o : std_logic;
+  signal n259_o : std_logic;
+  signal n261_o : std_logic;
+  signal n262_o : std_logic;
+  signal n264_o : std_logic;
   signal n270_o : std_logic;
+  signal n273_o : std_logic;
   signal n275_o : std_logic;
   signal n276_o : std_logic;
+  signal n277_o : std_logic;
+  signal n278_o : std_logic;
   signal n279_o : std_logic;
   signal n280_o : std_logic;
+  signal n281_o : std_logic;
+  signal n282_o : std_logic;
   signal n283_o : std_logic;
   signal n284_o : std_logic;
+  signal n285_o : std_logic;
+  signal n286_o : std_logic;
+  signal n287_o : std_logic;
+  signal n288_o : std_logic;
+  signal n289_o : std_logic;
+  signal n290_o : std_logic;
   signal n291_o : std_logic;
-  signal n295_o : std_logic;
-  signal n297_o : std_logic;
-  signal n298_o : std_logic;
-  signal n300_o : std_logic;
+  signal n292_o : std_logic;
+  signal n293_o : std_logic_vector (3 downto 0);
+  signal n294_o : std_logic_vector (3 downto 0);
+  signal n295_o : std_logic_vector (3 downto 0);
+  signal n296_o : std_logic_vector (3 downto 0);
+  signal n297_o : std_logic_vector (1 downto 0);
+  signal n298_o : std_logic_vector (15 downto 0);
+  signal n299_o : std_logic_vector (17 downto 0);
+  signal n300_o : std_logic_vector (16 downto 0);
+  signal n301_o : std_logic_vector (17 downto 0);
+  signal n302_o : std_logic_vector (17 downto 0);
+  signal n303_o : std_logic_vector (17 downto 0);
   signal n306_o : std_logic;
-  signal n309_o : std_logic;
-  signal n311_o : std_logic;
-  signal n312_o : std_logic;
-  signal n313_o : std_logic;
-  signal n314_o : std_logic;
-  signal n315_o : std_logic;
-  signal n316_o : std_logic;
-  signal n317_o : std_logic;
-  signal n318_o : std_logic;
-  signal n319_o : std_logic;
-  signal n320_o : std_logic;
-  signal n321_o : std_logic;
-  signal n322_o : std_logic;
-  signal n323_o : std_logic;
-  signal n324_o : std_logic;
-  signal n325_o : std_logic;
-  signal n326_o : std_logic;
-  signal n327_o : std_logic;
-  signal n328_o : std_logic;
-  signal n329_o : std_logic_vector (3 downto 0);
-  signal n330_o : std_logic_vector (3 downto 0);
-  signal n331_o : std_logic_vector (3 downto 0);
-  signal n332_o : std_logic_vector (3 downto 0);
-  signal n333_o : std_logic_vector (1 downto 0);
-  signal n334_o : std_logic_vector (15 downto 0);
+  signal n307_o : std_logic;
+  signal n309_o : std_logic_vector (17 downto 0);
+  signal n310_o : std_logic_vector (17 downto 0);
+  signal n315_q : std_logic_vector (17 downto 0);
+  signal n316_o : std_logic_vector (17 downto 0);
+  signal n317_o : std_logic_vector (17 downto 0);
+  signal n318_o : std_logic_vector (17 downto 0);
+  signal n319_o : std_logic_vector (17 downto 0);
+  signal n320_o : std_logic_vector (17 downto 0);
+  signal n321_o : std_logic_vector (17 downto 0);
+  signal n322_o : std_logic_vector (17 downto 0);
+  signal n323_o : std_logic_vector (17 downto 0);
+  signal n324_o : std_logic_vector (17 downto 0);
+  signal n325_o : std_logic_vector (17 downto 0);
+  signal n326_o : std_logic_vector (17 downto 0);
+  signal n327_o : std_logic_vector (17 downto 0);
+  signal n328_o : std_logic_vector (1 downto 0);
+  signal n329_o : std_logic_vector (17 downto 0);
+  signal n330_o : std_logic_vector (1 downto 0);
+  signal n331_o : std_logic_vector (17 downto 0);
+  signal n332_o : std_logic_vector (1 downto 0);
+  signal n333_o : std_logic_vector (17 downto 0);
+  signal n334_o : std_logic;
   signal n335_o : std_logic_vector (17 downto 0);
-  signal n336_o : std_logic_vector (16 downto 0);
+  signal n336_o : std_logic;
   signal n337_o : std_logic_vector (17 downto 0);
   signal n338_o : std_logic_vector (17 downto 0);
   signal n339_o : std_logic_vector (17 downto 0);
-  signal n342_o : std_logic;
-  signal n343_o : std_logic;
+  signal n340_o : std_logic_vector (17 downto 0);
+  signal n341_o : std_logic_vector (17 downto 0);
+  signal n342_o : std_logic_vector (17 downto 0);
+  signal n343_o : std_logic_vector (17 downto 0);
+  signal n344_o : std_logic_vector (17 downto 0);
   signal n345_o : std_logic_vector (17 downto 0);
   signal n346_o : std_logic_vector (17 downto 0);
-  signal n355_q : std_logic_vector (17 downto 0);
-  signal n356_o : std_logic_vector (17 downto 0);
+  signal n347_o : std_logic_vector (17 downto 0);
+  signal n348_o : std_logic_vector (17 downto 0);
+  signal n349_o : std_logic_vector (17 downto 0);
+  signal n350_o : std_logic_vector (1 downto 0);
+  signal n351_o : std_logic_vector (17 downto 0);
+  signal n352_o : std_logic_vector (1 downto 0);
+  signal n353_o : std_logic_vector (17 downto 0);
+  signal n354_o : std_logic_vector (1 downto 0);
+  signal n355_o : std_logic_vector (17 downto 0);
+  signal n356_o : std_logic;
   signal n357_o : std_logic_vector (17 downto 0);
-  signal n358_o : std_logic_vector (17 downto 0);
+  signal n358_o : std_logic;
   signal n359_o : std_logic_vector (17 downto 0);
-  signal n360_o : std_logic_vector (17 downto 0);
-  signal n361_o : std_logic_vector (17 downto 0);
-  signal n362_o : std_logic_vector (17 downto 0);
-  signal n363_o : std_logic_vector (17 downto 0);
-  signal n364_o : std_logic_vector (17 downto 0);
-  signal n365_o : std_logic_vector (17 downto 0);
-  signal n366_o : std_logic_vector (17 downto 0);
-  signal n367_o : std_logic_vector (17 downto 0);
-  signal n368_o : std_logic_vector (1 downto 0);
-  signal n369_o : std_logic_vector (17 downto 0);
-  signal n370_o : std_logic_vector (1 downto 0);
-  signal n371_o : std_logic_vector (17 downto 0);
-  signal n372_o : std_logic_vector (1 downto 0);
-  signal n373_o : std_logic_vector (17 downto 0);
-  signal n374_o : std_logic;
-  signal n375_o : std_logic_vector (17 downto 0);
-  signal n376_o : std_logic;
-  signal n377_o : std_logic_vector (17 downto 0);
-  signal n378_o : std_logic_vector (17 downto 0);
-  signal n379_o : std_logic_vector (17 downto 0);
-  signal n380_o : std_logic_vector (17 downto 0);
-  signal n381_o : std_logic_vector (17 downto 0);
-  signal n382_o : std_logic_vector (17 downto 0);
-  signal n383_o : std_logic_vector (17 downto 0);
-  signal n384_o : std_logic_vector (17 downto 0);
-  signal n385_o : std_logic_vector (17 downto 0);
-  signal n386_o : std_logic_vector (17 downto 0);
-  signal n387_o : std_logic_vector (17 downto 0);
-  signal n388_o : std_logic_vector (17 downto 0);
-  signal n389_o : std_logic_vector (17 downto 0);
-  signal n390_o : std_logic_vector (1 downto 0);
-  signal n391_o : std_logic_vector (17 downto 0);
-  signal n392_o : std_logic_vector (1 downto 0);
-  signal n393_o : std_logic_vector (17 downto 0);
-  signal n394_o : std_logic_vector (1 downto 0);
-  signal n395_o : std_logic_vector (17 downto 0);
-  signal n396_o : std_logic;
-  signal n397_o : std_logic_vector (17 downto 0);
-  signal n398_o : std_logic;
-  signal n399_o : std_logic_vector (17 downto 0);
 begin
   wrap_clk_i <= clk_i;
   wrap_reset_i <= reset_i;
@@ -282,9 +263,7 @@ begin
   -- Mixer.vhd:25:12
   channel_reg <= n61_q; -- (signal)
   -- Mixer.vhd:26:12
-  data_reg <= n355_q; -- (signal)
-  -- Mixer.vhd:32:15
-  -- n4_o <= '1' when rising_edge (wrap_clk_i) else '0';
+  data_reg <= n315_q; -- (signal)
   -- Mixer.vhd:35:21
   n6_o <= state_reg when wrap_valid_i = '0' else "01";
   -- Mixer.vhd:34:17
@@ -325,8 +304,6 @@ begin
   n35_o <= '1' when state_reg = "10" else '0';
   -- Mixer.vhd:51:20
   n36_o <= '0' when n35_o = '0' else '1';
-  -- Mixer.vhd:57:15
-  -- n39_o <= '1' when rising_edge (wrap_clk_i) else '0';
   -- Mixer.vhd:60:21
   n41_o <= channel_reg when wrap_valid_i = '0' else "0001";
   -- Mixer.vhd:59:17
@@ -360,8 +337,6 @@ begin
       n61_q <= n56_o;
     end if;
   end process;
-  -- Mixer.vhd:78:15
-  -- n63_o <= '1' when rising_edge (wrap_clk_i) else '0';
   -- Mixer.vhd:79:27
   n65_o <= '1' when state_reg = "00" else '0';
   -- Mixer.vhd:79:41
@@ -374,361 +349,314 @@ begin
   n74_o <= std_logic_vector (unsigned'("1011") - unsigned (channel_reg));
   -- Mixer.vhd:80:95
   n78_o <= std_logic_vector (unsigned'("1011") - unsigned (channel_reg));
-  -- ../fixed_pkg.vhd:266:100
-  n95_o <= std_logic_vector (resize (signed (n377_o), 36));  --  sext
-  -- ../fixed_pkg.vhd:266:100
-  n96_o <= std_logic_vector (resize (signed (n399_o), 36));  --  sext
-  -- ../fixed_pkg.vhd:266:100
+  -- ../fixed_pkg.vhd:268:100
+  n95_o <= std_logic_vector (resize (signed (n337_o), 36));  --  sext
+  -- ../fixed_pkg.vhd:268:100
+  n96_o <= std_logic_vector (resize (signed (n359_o), 36));  --  sext
+  -- ../fixed_pkg.vhd:268:100
   n97_o <= std_logic_vector (resize (signed (n95_o) * signed (n96_o), 36));
   -- ../fixed_pkg.vhd:168:39
   n114_o <= std_logic_vector (resize (signed (data_reg), 21));  --  sext
-  -- ../fixed_pkg.vhd:173:9
-  n120_o <= not '0';
-  -- ../fixed_pkg.vhd:173:9
-  n121_o <= n120_o or '1';
-  -- ../fixed_pkg.vhd:173:9
-  n122: postponed assert n121_o = '1' severity error; --  assert
-  -- ../fixed_pkg.vhd:177:9
-  n124_o <= not '0';
-  -- ../fixed_pkg.vhd:177:9
-  n125_o <= n124_o or '1';
-  -- ../fixed_pkg.vhd:177:9
-  n126: postponed assert n125_o = '1' severity error; --  assert
-  n128_o <= n127_o (15 downto 0);
-  n129_o <= n114_o & n128_o;
+  n119_o <= n118_o (15 downto 0);
+  n120_o <= n114_o & n119_o;
   -- ../fixed_pkg.vhd:168:39
-  n140_o <= std_logic_vector (resize (signed (n97_o), 37));  --  sext
-  -- ../fixed_pkg.vhd:173:9
-  n146_o <= not '0';
-  -- ../fixed_pkg.vhd:173:9
-  n147_o <= n146_o or '1';
-  -- ../fixed_pkg.vhd:173:9
-  n148: postponed assert n147_o = '1' severity error; --  assert
-  -- ../fixed_pkg.vhd:177:9
-  n150_o <= not '0';
-  -- ../fixed_pkg.vhd:177:9
-  n151_o <= n150_o or '1';
-  -- ../fixed_pkg.vhd:177:9
-  n152: postponed assert n151_o = '1' severity error; --  assert
-  -- ../fixed_pkg.vhd:255:67
-  n164_o <= std_logic_vector (unsigned (n129_o) + unsigned (n140_o));
+  n131_o <= std_logic_vector (resize (signed (n97_o), 37));  --  sext
+  -- ../fixed_pkg.vhd:257:67
+  n146_o <= std_logic_vector (unsigned (n120_o) + unsigned (n131_o));
   -- ../fixed_pkg.vhd:168:39
-  n175_o <= n164_o (35 downto 0);  --  trunc
+  n157_o <= n146_o (35 downto 0);  --  trunc
   -- ../fixed_pkg.vhd:169:40
-  n176_o <= n164_o (36);
-  -- ../fixed_pkg.vhd:173:9
-  n181_o <= not '0';
-  -- ../fixed_pkg.vhd:173:9
-  n182_o <= n181_o or '1';
-  -- ../fixed_pkg.vhd:173:9
-  n183: postponed assert n182_o = '1' severity error; --  assert
-  -- ../fixed_pkg.vhd:177:9
-  n185_o <= not '0';
-  -- ../fixed_pkg.vhd:177:9
-  n186_o <= n185_o or '1';
-  -- ../fixed_pkg.vhd:177:9
-  n187: postponed assert n186_o = '1' severity error; --  assert
-  -- ../fixed_pkg.vhd:183:23
-  n189_o <= n164_o (35);
-  -- ../fixed_pkg.vhd:183:27
-  n190_o <= '1' when n189_o /= n176_o else '0';
-  -- ../fixed_pkg.vhd:183:17
-  n197_o <= '0' when n190_o = '0' else '1';
-  -- ../fixed_pkg.vhd:194:31
-  n203_o <= not n176_o;
-  -- ../fixed_pkg.vhd:194:31
-  n204_o <= not n176_o;
-  -- ../fixed_pkg.vhd:194:31
-  n205_o <= not n176_o;
-  -- ../fixed_pkg.vhd:194:31
-  n206_o <= not n176_o;
-  -- ../fixed_pkg.vhd:194:31
-  n207_o <= not n176_o;
-  -- ../fixed_pkg.vhd:194:31
-  n208_o <= not n176_o;
-  -- ../fixed_pkg.vhd:194:31
-  n209_o <= not n176_o;
-  -- ../fixed_pkg.vhd:194:31
-  n210_o <= not n176_o;
-  -- ../fixed_pkg.vhd:194:31
-  n211_o <= not n176_o;
-  -- ../fixed_pkg.vhd:194:31
-  n212_o <= not n176_o;
-  -- ../fixed_pkg.vhd:194:31
-  n213_o <= not n176_o;
-  -- ../fixed_pkg.vhd:194:31
-  n214_o <= not n176_o;
-  -- ../fixed_pkg.vhd:194:31
-  n215_o <= not n176_o;
-  -- ../fixed_pkg.vhd:194:31
-  n216_o <= not n176_o;
-  -- ../fixed_pkg.vhd:194:31
-  n217_o <= not n176_o;
-  -- ../fixed_pkg.vhd:194:31
-  n218_o <= not n176_o;
-  -- ../fixed_pkg.vhd:194:31
-  n219_o <= not n176_o;
-  -- ../fixed_pkg.vhd:194:31
-  n220_o <= not n176_o;
-  -- ../fixed_pkg.vhd:194:31
-  n221_o <= not n176_o;
-  -- ../fixed_pkg.vhd:194:31
-  n222_o <= not n176_o;
-  -- ../fixed_pkg.vhd:194:31
-  n223_o <= not n176_o;
-  -- ../fixed_pkg.vhd:194:31
-  n224_o <= not n176_o;
-  -- ../fixed_pkg.vhd:194:31
-  n225_o <= not n176_o;
-  -- ../fixed_pkg.vhd:194:31
-  n226_o <= not n176_o;
-  -- ../fixed_pkg.vhd:194:31
-  n227_o <= not n176_o;
-  -- ../fixed_pkg.vhd:194:31
-  n228_o <= not n176_o;
-  -- ../fixed_pkg.vhd:194:31
-  n229_o <= not n176_o;
-  -- ../fixed_pkg.vhd:194:31
-  n230_o <= not n176_o;
-  -- ../fixed_pkg.vhd:194:31
-  n231_o <= not n176_o;
-  -- ../fixed_pkg.vhd:194:31
-  n232_o <= not n176_o;
-  -- ../fixed_pkg.vhd:194:31
-  n233_o <= not n176_o;
-  -- ../fixed_pkg.vhd:194:31
-  n234_o <= not n176_o;
-  -- ../fixed_pkg.vhd:194:31
-  n235_o <= not n176_o;
-  -- ../fixed_pkg.vhd:194:31
-  n236_o <= not n176_o;
-  -- ../fixed_pkg.vhd:194:31
-  n237_o <= not n176_o;
-  -- ../fixed_pkg.vhd:194:31
-  n238_o <= not n176_o;
-  n239_o <= n203_o & n204_o & n205_o & n206_o;
-  n240_o <= n207_o & n208_o & n209_o & n210_o;
-  n241_o <= n211_o & n212_o & n213_o & n214_o;
-  n242_o <= n215_o & n216_o & n217_o & n218_o;
-  n243_o <= n219_o & n220_o & n221_o & n222_o;
-  n244_o <= n223_o & n224_o & n225_o & n226_o;
-  n245_o <= n227_o & n228_o & n229_o & n230_o;
-  n246_o <= n231_o & n232_o & n233_o & n234_o;
-  n247_o <= n235_o & n236_o & n237_o & n238_o;
-  n248_o <= n239_o & n240_o & n241_o & n242_o;
-  n249_o <= n243_o & n244_o & n245_o & n246_o;
-  n250_o <= n248_o & n249_o & n247_o;
-  n251_o <= n250_o (34 downto 0);
-  n252_o <= n176_o & n251_o;
-  -- ../fixed_pkg.vhd:193:9
-  n253_o <= n175_o when n197_o = '0' else n252_o;
+  n158_o <= n146_o (36);
+  -- ../fixed_pkg.vhd:185:23
+  n162_o <= n146_o (35);
+  -- ../fixed_pkg.vhd:185:27
+  n163_o <= '1' when n162_o /= n158_o else '0';
+  -- ../fixed_pkg.vhd:185:17
+  n170_o <= '0' when n163_o = '0' else '1';
+  -- ../fixed_pkg.vhd:196:31
+  n176_o <= not n158_o;
+  -- ../fixed_pkg.vhd:196:31
+  n177_o <= not n158_o;
+  -- ../fixed_pkg.vhd:196:31
+  n178_o <= not n158_o;
+  -- ../fixed_pkg.vhd:196:31
+  n179_o <= not n158_o;
+  -- ../fixed_pkg.vhd:196:31
+  n180_o <= not n158_o;
+  -- ../fixed_pkg.vhd:196:31
+  n181_o <= not n158_o;
+  -- ../fixed_pkg.vhd:196:31
+  n182_o <= not n158_o;
+  -- ../fixed_pkg.vhd:196:31
+  n183_o <= not n158_o;
+  -- ../fixed_pkg.vhd:196:31
+  n184_o <= not n158_o;
+  -- ../fixed_pkg.vhd:196:31
+  n185_o <= not n158_o;
+  -- ../fixed_pkg.vhd:196:31
+  n186_o <= not n158_o;
+  -- ../fixed_pkg.vhd:196:31
+  n187_o <= not n158_o;
+  -- ../fixed_pkg.vhd:196:31
+  n188_o <= not n158_o;
+  -- ../fixed_pkg.vhd:196:31
+  n189_o <= not n158_o;
+  -- ../fixed_pkg.vhd:196:31
+  n190_o <= not n158_o;
+  -- ../fixed_pkg.vhd:196:31
+  n191_o <= not n158_o;
+  -- ../fixed_pkg.vhd:196:31
+  n192_o <= not n158_o;
+  -- ../fixed_pkg.vhd:196:31
+  n193_o <= not n158_o;
+  -- ../fixed_pkg.vhd:196:31
+  n194_o <= not n158_o;
+  -- ../fixed_pkg.vhd:196:31
+  n195_o <= not n158_o;
+  -- ../fixed_pkg.vhd:196:31
+  n196_o <= not n158_o;
+  -- ../fixed_pkg.vhd:196:31
+  n197_o <= not n158_o;
+  -- ../fixed_pkg.vhd:196:31
+  n198_o <= not n158_o;
+  -- ../fixed_pkg.vhd:196:31
+  n199_o <= not n158_o;
+  -- ../fixed_pkg.vhd:196:31
+  n200_o <= not n158_o;
+  -- ../fixed_pkg.vhd:196:31
+  n201_o <= not n158_o;
+  -- ../fixed_pkg.vhd:196:31
+  n202_o <= not n158_o;
+  -- ../fixed_pkg.vhd:196:31
+  n203_o <= not n158_o;
+  -- ../fixed_pkg.vhd:196:31
+  n204_o <= not n158_o;
+  -- ../fixed_pkg.vhd:196:31
+  n205_o <= not n158_o;
+  -- ../fixed_pkg.vhd:196:31
+  n206_o <= not n158_o;
+  -- ../fixed_pkg.vhd:196:31
+  n207_o <= not n158_o;
+  -- ../fixed_pkg.vhd:196:31
+  n208_o <= not n158_o;
+  -- ../fixed_pkg.vhd:196:31
+  n209_o <= not n158_o;
+  -- ../fixed_pkg.vhd:196:31
+  n210_o <= not n158_o;
+  -- ../fixed_pkg.vhd:196:31
+  n211_o <= not n158_o;
+  n212_o <= n176_o & n177_o & n178_o & n179_o;
+  n213_o <= n180_o & n181_o & n182_o & n183_o;
+  n214_o <= n184_o & n185_o & n186_o & n187_o;
+  n215_o <= n188_o & n189_o & n190_o & n191_o;
+  n216_o <= n192_o & n193_o & n194_o & n195_o;
+  n217_o <= n196_o & n197_o & n198_o & n199_o;
+  n218_o <= n200_o & n201_o & n202_o & n203_o;
+  n219_o <= n204_o & n205_o & n206_o & n207_o;
+  n220_o <= n208_o & n209_o & n210_o & n211_o;
+  n221_o <= n212_o & n213_o & n214_o & n215_o;
+  n222_o <= n216_o & n217_o & n218_o & n219_o;
+  n223_o <= n221_o & n222_o & n220_o;
+  n224_o <= n223_o (34 downto 0);
+  n225_o <= n158_o & n224_o;
+  -- ../fixed_pkg.vhd:195:9
+  n226_o <= n157_o when n170_o = '0' else n225_o;
   -- ../fixed_pkg.vhd:168:39
-  n269_o <= n253_o (33 downto 0);  --  trunc
+  n242_o <= n226_o (33 downto 0);  --  trunc
   -- ../fixed_pkg.vhd:169:40
-  n270_o <= n253_o (35);
-  -- ../fixed_pkg.vhd:173:9
-  n275_o <= not '0';
-  -- ../fixed_pkg.vhd:173:9
-  n276_o <= n275_o or '1';
-  -- ../fixed_pkg.vhd:173:9
-  n277: postponed assert n276_o = '1' severity error; --  assert
-  -- ../fixed_pkg.vhd:177:9
-  n279_o <= not '0';
-  -- ../fixed_pkg.vhd:177:9
-  n280_o <= n279_o or '1';
-  -- ../fixed_pkg.vhd:177:9
-  n281: postponed assert n280_o = '1' severity error; --  assert
-  -- ../fixed_pkg.vhd:183:23
-  n283_o <= n253_o (34);
-  -- ../fixed_pkg.vhd:183:27
-  n284_o <= '1' when n283_o /= n270_o else '0';
-  -- ../fixed_pkg.vhd:183:17
-  n291_o <= '0' when n284_o = '0' else '1';
-  -- ../fixed_pkg.vhd:183:17
-  n295_o <= '1' when n284_o = '0' else '0';
-  -- ../fixed_pkg.vhd:183:23
-  n297_o <= n253_o (33);
-  -- ../fixed_pkg.vhd:183:27
-  n298_o <= '1' when n297_o /= n270_o else '0';
-  -- ../fixed_pkg.vhd:183:17
-  n300_o <= n291_o when n309_o = '0' else '1';
-  -- ../fixed_pkg.vhd:183:17
-  n306_o <= n298_o and n295_o;
-  -- ../fixed_pkg.vhd:183:17
-  n309_o <= n295_o and n306_o;
-  -- ../fixed_pkg.vhd:194:31
-  n311_o <= not n270_o;
-  -- ../fixed_pkg.vhd:194:31
-  n312_o <= not n270_o;
-  -- ../fixed_pkg.vhd:194:31
-  n313_o <= not n270_o;
-  -- ../fixed_pkg.vhd:194:31
-  n314_o <= not n270_o;
-  -- ../fixed_pkg.vhd:194:31
-  n315_o <= not n270_o;
-  -- ../fixed_pkg.vhd:194:31
-  n316_o <= not n270_o;
-  -- ../fixed_pkg.vhd:194:31
-  n317_o <= not n270_o;
-  -- ../fixed_pkg.vhd:194:31
-  n318_o <= not n270_o;
-  -- ../fixed_pkg.vhd:194:31
-  n319_o <= not n270_o;
-  -- ../fixed_pkg.vhd:194:31
-  n320_o <= not n270_o;
-  -- ../fixed_pkg.vhd:194:31
-  n321_o <= not n270_o;
-  -- ../fixed_pkg.vhd:194:31
-  n322_o <= not n270_o;
-  -- ../fixed_pkg.vhd:194:31
-  n323_o <= not n270_o;
-  -- ../fixed_pkg.vhd:194:31
-  n324_o <= not n270_o;
-  -- ../fixed_pkg.vhd:194:31
-  n325_o <= not n270_o;
-  -- ../fixed_pkg.vhd:194:31
-  n326_o <= not n270_o;
-  -- ../fixed_pkg.vhd:194:31
-  n327_o <= not n270_o;
-  -- ../fixed_pkg.vhd:194:31
-  n328_o <= not n270_o;
-  n329_o <= n311_o & n312_o & n313_o & n314_o;
-  n330_o <= n315_o & n316_o & n317_o & n318_o;
-  n331_o <= n319_o & n320_o & n321_o & n322_o;
-  n332_o <= n323_o & n324_o & n325_o & n326_o;
-  n333_o <= n327_o & n328_o;
-  n334_o <= n329_o & n330_o & n331_o & n332_o;
-  n335_o <= n334_o & n333_o;
-  n336_o <= n335_o (16 downto 0);
-  -- ../fixed_pkg.vhd:199:40
-  n337_o <= n269_o (33 downto 16);
-  n338_o <= n270_o & n336_o;
-  -- ../fixed_pkg.vhd:193:9
-  n339_o <= n337_o when n300_o = '0' else n338_o;
+  n243_o <= n226_o (35);
+  -- ../fixed_pkg.vhd:185:23
+  n247_o <= n226_o (34);
+  -- ../fixed_pkg.vhd:185:27
+  n248_o <= '1' when n247_o /= n243_o else '0';
+  -- ../fixed_pkg.vhd:185:17
+  n255_o <= '0' when n248_o = '0' else '1';
+  -- ../fixed_pkg.vhd:185:17
+  n259_o <= '1' when n248_o = '0' else '0';
+  -- ../fixed_pkg.vhd:185:23
+  n261_o <= n226_o (33);
+  -- ../fixed_pkg.vhd:185:27
+  n262_o <= '1' when n261_o /= n243_o else '0';
+  -- ../fixed_pkg.vhd:185:17
+  n264_o <= n255_o when n273_o = '0' else '1';
+  -- ../fixed_pkg.vhd:185:17
+  n270_o <= n262_o and n259_o;
+  -- ../fixed_pkg.vhd:185:17
+  n273_o <= n259_o and n270_o;
+  -- ../fixed_pkg.vhd:196:31
+  n275_o <= not n243_o;
+  -- ../fixed_pkg.vhd:196:31
+  n276_o <= not n243_o;
+  -- ../fixed_pkg.vhd:196:31
+  n277_o <= not n243_o;
+  -- ../fixed_pkg.vhd:196:31
+  n278_o <= not n243_o;
+  -- ../fixed_pkg.vhd:196:31
+  n279_o <= not n243_o;
+  -- ../fixed_pkg.vhd:196:31
+  n280_o <= not n243_o;
+  -- ../fixed_pkg.vhd:196:31
+  n281_o <= not n243_o;
+  -- ../fixed_pkg.vhd:196:31
+  n282_o <= not n243_o;
+  -- ../fixed_pkg.vhd:196:31
+  n283_o <= not n243_o;
+  -- ../fixed_pkg.vhd:196:31
+  n284_o <= not n243_o;
+  -- ../fixed_pkg.vhd:196:31
+  n285_o <= not n243_o;
+  -- ../fixed_pkg.vhd:196:31
+  n286_o <= not n243_o;
+  -- ../fixed_pkg.vhd:196:31
+  n287_o <= not n243_o;
+  -- ../fixed_pkg.vhd:196:31
+  n288_o <= not n243_o;
+  -- ../fixed_pkg.vhd:196:31
+  n289_o <= not n243_o;
+  -- ../fixed_pkg.vhd:196:31
+  n290_o <= not n243_o;
+  -- ../fixed_pkg.vhd:196:31
+  n291_o <= not n243_o;
+  -- ../fixed_pkg.vhd:196:31
+  n292_o <= not n243_o;
+  n293_o <= n275_o & n276_o & n277_o & n278_o;
+  n294_o <= n279_o & n280_o & n281_o & n282_o;
+  n295_o <= n283_o & n284_o & n285_o & n286_o;
+  n296_o <= n287_o & n288_o & n289_o & n290_o;
+  n297_o <= n291_o & n292_o;
+  n298_o <= n293_o & n294_o & n295_o & n296_o;
+  n299_o <= n298_o & n297_o;
+  n300_o <= n299_o (16 downto 0);
+  -- ../fixed_pkg.vhd:201:40
+  n301_o <= n242_o (33 downto 16);
+  n302_o <= n243_o & n300_o;
+  -- ../fixed_pkg.vhd:195:9
+  n303_o <= n301_o when n264_o = '0' else n302_o;
   -- Mixer.vhd:81:29
-  n342_o <= '1' when state_reg = "10" else '0';
+  n306_o <= '1' when state_reg = "10" else '0';
   -- Mixer.vhd:81:43
-  n343_o <= n342_o and wrap_ready_i;
+  n307_o <= n306_o and wrap_ready_i;
   -- Mixer.vhd:81:13
-  n345_o <= data_reg when n343_o = '0' else "000000000000000000";
+  n309_o <= data_reg when n307_o = '0' else "000000000000000000";
   -- Mixer.vhd:79:13
-  n346_o <= n345_o when n69_o = '0' else n339_o;
+  n310_o <= n309_o when n69_o = '0' else n303_o;
   -- Mixer.vhd:78:9
   process (wrap_clk_i, wrap_reset_i)
   begin
     if wrap_reset_i = '1' then
-      n355_q <= "000000000000000000";
+      n315_q <= "000000000000000000";
     elsif rising_edge (wrap_clk_i) then
-      n355_q <= n346_o;
+      n315_q <= n310_o;
     end if;
   end process;
-  -- ../fixed_pkg.vhd:173:9
-  n356_o <= wrap_env_data_i (17 downto 0);
-  -- ../fixed_pkg.vhd:173:9
-  n357_o <= wrap_env_data_i (35 downto 18);
-  -- ../fixed_pkg.vhd:173:9
-  n358_o <= wrap_env_data_i (53 downto 36);
-  -- ../fixed_pkg.vhd:173:9
-  n359_o <= wrap_env_data_i (71 downto 54);
   -- Mixer.vhd:18:9
-  n360_o <= wrap_env_data_i (89 downto 72);
+  n316_o <= wrap_env_data_i (17 downto 0);
   -- Mixer.vhd:16:9
-  n361_o <= wrap_env_data_i (107 downto 90);
+  n317_o <= wrap_env_data_i (35 downto 18);
   -- Mixer.vhd:13:9
-  n362_o <= wrap_env_data_i (125 downto 108);
-  n363_o <= wrap_env_data_i (143 downto 126);
-  n364_o <= wrap_env_data_i (161 downto 144);
-  -- ../fixed_pkg.vhd:183:17
-  n365_o <= wrap_env_data_i (179 downto 162);
-  -- ../fixed_pkg.vhd:183:17
-  n366_o <= wrap_env_data_i (197 downto 180);
-  -- ../fixed_pkg.vhd:183:17
-  n367_o <= wrap_env_data_i (215 downto 198);
+  n318_o <= wrap_env_data_i (53 downto 36);
+  n319_o <= wrap_env_data_i (71 downto 54);
+  n320_o <= wrap_env_data_i (89 downto 72);
+  -- ../fixed_pkg.vhd:185:17
+  n321_o <= wrap_env_data_i (107 downto 90);
+  -- ../fixed_pkg.vhd:185:17
+  n322_o <= wrap_env_data_i (125 downto 108);
+  -- ../fixed_pkg.vhd:185:17
+  n323_o <= wrap_env_data_i (143 downto 126);
+  -- ../fixed_pkg.vhd:185:17
+  n324_o <= wrap_env_data_i (161 downto 144);
+  -- ../fixed_pkg.vhd:185:17
+  n325_o <= wrap_env_data_i (179 downto 162);
+  n326_o <= wrap_env_data_i (197 downto 180);
+  -- ../fixed_pkg.vhd:185:17
+  n327_o <= wrap_env_data_i (215 downto 198);
   -- Mixer.vhd:80:65
-  n368_o <= n74_o (1 downto 0);
+  n328_o <= n74_o (1 downto 0);
   -- Mixer.vhd:80:65
-  with n368_o select n369_o <=
-    n356_o when "00",
-    n357_o when "01",
-    n358_o when "10",
-    n359_o when "11",
+  with n328_o select n329_o <=
+    n316_o when "00",
+    n317_o when "01",
+    n318_o when "10",
+    n319_o when "11",
     (17 downto 0 => 'X') when others;
   -- Mixer.vhd:80:65
-  n370_o <= n74_o (1 downto 0);
+  n330_o <= n74_o (1 downto 0);
   -- Mixer.vhd:80:65
-  with n370_o select n371_o <=
-    n360_o when "00",
-    n361_o when "01",
-    n362_o when "10",
-    n363_o when "11",
+  with n330_o select n331_o <=
+    n320_o when "00",
+    n321_o when "01",
+    n322_o when "10",
+    n323_o when "11",
     (17 downto 0 => 'X') when others;
   -- Mixer.vhd:80:65
-  n372_o <= n74_o (1 downto 0);
+  n332_o <= n74_o (1 downto 0);
   -- Mixer.vhd:80:65
-  with n372_o select n373_o <=
-    n364_o when "00",
-    n365_o when "01",
-    n366_o when "10",
-    n367_o when "11",
+  with n332_o select n333_o <=
+    n324_o when "00",
+    n325_o when "01",
+    n326_o when "10",
+    n327_o when "11",
     (17 downto 0 => 'X') when others;
-  n374_o <= n74_o (2);
+  n334_o <= n74_o (2);
   -- Mixer.vhd:80:65
-  n375_o <= n369_o when n374_o = '0' else n371_o;
-  -- ../fixed_pkg.vhd:183:17
-  n376_o <= n74_o (3);
-  -- Mixer.vhd:80:65
-  n377_o <= n375_o when n376_o = '0' else n373_o;
-  -- Mixer.vhd:80:66
-  n378_o <= wrap_carrier_data_i (17 downto 0);
-  -- Mixer.vhd:80:65
-  n379_o <= wrap_carrier_data_i (35 downto 18);
-  n380_o <= wrap_carrier_data_i (53 downto 36);
-  -- ../fixed_pkg.vhd:182:13
-  n381_o <= wrap_carrier_data_i (71 downto 54);
+  n335_o <= n329_o when n334_o = '0' else n331_o;
   -- ../fixed_pkg.vhd:171:18
-  n382_o <= wrap_carrier_data_i (89 downto 72);
-  n383_o <= wrap_carrier_data_i (107 downto 90);
+  n336_o <= n74_o (3);
+  -- Mixer.vhd:80:65
+  n337_o <= n335_o when n336_o = '0' else n333_o;
+  -- Mixer.vhd:80:66
+  n338_o <= wrap_carrier_data_i (17 downto 0);
+  -- Mixer.vhd:80:65
+  n339_o <= wrap_carrier_data_i (35 downto 18);
   -- ../fixed_pkg.vhd:170:18
-  n384_o <= wrap_carrier_data_i (125 downto 108);
-  n385_o <= wrap_carrier_data_i (143 downto 126);
+  n340_o <= wrap_carrier_data_i (53 downto 36);
+  n341_o <= wrap_carrier_data_i (71 downto 54);
   -- ../fixed_pkg.vhd:9:14
-  n386_o <= wrap_carrier_data_i (161 downto 144);
+  n342_o <= wrap_carrier_data_i (89 downto 72);
   -- ../fixed_pkg.vhd:9:14
-  n387_o <= wrap_carrier_data_i (179 downto 162);
-  n388_o <= wrap_carrier_data_i (197 downto 180);
+  n343_o <= wrap_carrier_data_i (107 downto 90);
+  n344_o <= wrap_carrier_data_i (125 downto 108);
   -- ../fixed_pkg.vhd:9:14
-  n389_o <= wrap_carrier_data_i (215 downto 198);
+  n345_o <= wrap_carrier_data_i (143 downto 126);
+  -- ../fixed_pkg.vhd:24:14
+  n346_o <= wrap_carrier_data_i (161 downto 144);
+  -- ../fixed_pkg.vhd:24:14
+  n347_o <= wrap_carrier_data_i (179 downto 162);
+  n348_o <= wrap_carrier_data_i (197 downto 180);
+  -- ../fixed_pkg.vhd:24:14
+  n349_o <= wrap_carrier_data_i (215 downto 198);
   -- Mixer.vhd:80:95
-  n390_o <= n78_o (1 downto 0);
+  n350_o <= n78_o (1 downto 0);
   -- Mixer.vhd:80:95
-  with n390_o select n391_o <=
-    n378_o when "00",
-    n379_o when "01",
-    n380_o when "10",
-    n381_o when "11",
+  with n350_o select n351_o <=
+    n338_o when "00",
+    n339_o when "01",
+    n340_o when "10",
+    n341_o when "11",
     (17 downto 0 => 'X') when others;
   -- Mixer.vhd:80:95
-  n392_o <= n78_o (1 downto 0);
+  n352_o <= n78_o (1 downto 0);
   -- Mixer.vhd:80:95
-  with n392_o select n393_o <=
-    n382_o when "00",
-    n383_o when "01",
-    n384_o when "10",
-    n385_o when "11",
+  with n352_o select n353_o <=
+    n342_o when "00",
+    n343_o when "01",
+    n344_o when "10",
+    n345_o when "11",
     (17 downto 0 => 'X') when others;
   -- Mixer.vhd:80:95
-  n394_o <= n78_o (1 downto 0);
+  n354_o <= n78_o (1 downto 0);
   -- Mixer.vhd:80:95
-  with n394_o select n395_o <=
-    n386_o when "00",
-    n387_o when "01",
-    n388_o when "10",
-    n389_o when "11",
+  with n354_o select n355_o <=
+    n346_o when "00",
+    n347_o when "01",
+    n348_o when "10",
+    n349_o when "11",
     (17 downto 0 => 'X') when others;
-  n396_o <= n78_o (2);
+  -- ../fixed_pkg.vhd:185:17
+  n356_o <= n78_o (2);
   -- Mixer.vhd:80:95
-  n397_o <= n391_o when n396_o = '0' else n393_o;
-  n398_o <= n78_o (3);
+  n357_o <= n351_o when n356_o = '0' else n353_o;
+  n358_o <= n78_o (3);
   -- Mixer.vhd:80:95
-  n399_o <= n397_o when n398_o = '0' else n395_o;
+  n359_o <= n357_o when n358_o = '0' else n355_o;
 end rtl;

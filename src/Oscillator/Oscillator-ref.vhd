@@ -27,7 +27,6 @@ architecture rtl of oscillator is
   signal down_reg : std_logic;
   signal sign_reg : std_logic;
   signal index_reg : std_logic_vector (4 downto 0);
-  signal n3_o : std_logic;
   signal n4_o : std_logic_vector (31 downto 0);
   signal n5_o : std_logic_vector (31 downto 0);
   signal n6_o : std_logic_vector (31 downto 0);
@@ -61,7 +60,6 @@ architecture rtl of oscillator is
   signal n55_q : std_logic;
   signal n56_o : std_logic_vector (4 downto 0);
   signal n57_q : std_logic_vector (4 downto 0);
-  signal n63_o : std_logic;
   signal n64_o : std_logic;
   signal n66_o : std_logic_vector (4 downto 0);
   signal n72_o : std_logic_vector (4 downto 0);
@@ -69,13 +67,18 @@ architecture rtl of oscillator is
   signal n86_o : std_logic_vector (18 downto 0);
   signal n102_o : std_logic_vector (17 downto 0);
   signal n103_o : std_logic;
+  signal n107_o : std_logic;
   signal n108_o : std_logic;
-  signal n109_o : std_logic;
-  signal n112_o : std_logic;
-  signal n113_o : std_logic;
-  signal n116_o : std_logic;
-  signal n117_o : std_logic;
+  signal n115_o : std_logic;
+  signal n121_o : std_logic;
+  signal n122_o : std_logic;
+  signal n123_o : std_logic;
   signal n124_o : std_logic;
+  signal n125_o : std_logic;
+  signal n126_o : std_logic;
+  signal n127_o : std_logic;
+  signal n128_o : std_logic;
+  signal n129_o : std_logic;
   signal n130_o : std_logic;
   signal n131_o : std_logic;
   signal n132_o : std_logic;
@@ -85,44 +88,33 @@ architecture rtl of oscillator is
   signal n136_o : std_logic;
   signal n137_o : std_logic;
   signal n138_o : std_logic;
-  signal n139_o : std_logic;
-  signal n140_o : std_logic;
-  signal n141_o : std_logic;
-  signal n142_o : std_logic;
-  signal n143_o : std_logic;
-  signal n144_o : std_logic;
-  signal n145_o : std_logic;
-  signal n146_o : std_logic;
-  signal n147_o : std_logic;
-  signal n148_o : std_logic_vector (3 downto 0);
-  signal n149_o : std_logic_vector (3 downto 0);
-  signal n150_o : std_logic_vector (3 downto 0);
-  signal n151_o : std_logic_vector (3 downto 0);
-  signal n152_o : std_logic_vector (1 downto 0);
-  signal n153_o : std_logic_vector (15 downto 0);
-  signal n154_o : std_logic_vector (17 downto 0);
-  signal n155_o : std_logic_vector (16 downto 0);
-  signal n156_o : std_logic_vector (17 downto 0);
-  signal n157_o : std_logic_vector (17 downto 0);
-  signal n159_o : std_logic_vector (17 downto 0);
-  signal n163_q : std_logic_vector (17 downto 0);
-  signal n165_data : std_logic_vector (17 downto 0);
-  signal n167_data : std_logic_vector (17 downto 0);
+  signal n139_o : std_logic_vector (3 downto 0);
+  signal n140_o : std_logic_vector (3 downto 0);
+  signal n141_o : std_logic_vector (3 downto 0);
+  signal n142_o : std_logic_vector (3 downto 0);
+  signal n143_o : std_logic_vector (1 downto 0);
+  signal n144_o : std_logic_vector (15 downto 0);
+  signal n145_o : std_logic_vector (17 downto 0);
+  signal n146_o : std_logic_vector (16 downto 0);
+  signal n147_o : std_logic_vector (17 downto 0);
+  signal n148_o : std_logic_vector (17 downto 0);
+  signal n150_o : std_logic_vector (17 downto 0);
+  signal n153_q : std_logic_vector (17 downto 0);
+  signal n155_data : std_logic_vector (17 downto 0);
+  signal n157_data : std_logic_vector (17 downto 0);
 begin
   wrap_clk_i <= clk_i;
   wrap_reset_i <= reset_i;
   wrap_step_i <= std_logic_vector(to_unsigned(step_i, 5));
   wrap_ready_i <= ready_i;
   data_o <= sfixed(wrap_data_o);
-  wrap_data_o <= n163_q;
+  wrap_data_o <= n153_q;
   -- Oscillator.vhd:19:12
   down_reg <= n53_q; -- (signal)
   -- Oscillator.vhd:19:22
   sign_reg <= n55_q; -- (signal)
   -- Oscillator.vhd:20:12
   index_reg <= n57_q; -- (signal)
-  -- Oscillator.vhd:29:15
-  -- n3_o <= '1' when rising_edge (wrap_clk_i) else '0';
   -- Oscillator.vhd:32:45
   n4_o <= "000000000000000000000000000" & index_reg;  --  uext
   -- Oscillator.vhd:32:45
@@ -210,101 +202,87 @@ begin
       n57_q <= n56_o;
     end if;
   end process;
-  -- Oscillator.vhd:52:12
-  -- n63_o <= '1' when rising_edge (wrap_clk_i) else '0';
   -- Oscillator.vhd:53:25
   n64_o <= not sign_reg;
   -- Oscillator.vhd:54:37
   n66_o <= std_logic_vector (unsigned'("11001") - unsigned (index_reg));
   -- Oscillator.vhd:56:38
   n72_o <= std_logic_vector (unsigned'("11001") - unsigned (index_reg));
-  -- ../fixed_pkg.vhd:229:32
-  n85_o <= std_logic_vector (resize (signed (n167_data), 19));  --  sext
-  -- ../fixed_pkg.vhd:230:68
+  -- ../fixed_pkg.vhd:231:32
+  n85_o <= std_logic_vector (resize (signed (n157_data), 19));  --  sext
+  -- ../fixed_pkg.vhd:232:68
   n86_o <= std_logic_vector(-signed (n85_o));
   -- ../fixed_pkg.vhd:168:39
   n102_o <= n86_o (17 downto 0);  --  trunc
   -- ../fixed_pkg.vhd:169:40
   n103_o <= n86_o (18);
-  -- ../fixed_pkg.vhd:173:9
-  n108_o <= not '0';
-  -- ../fixed_pkg.vhd:173:9
-  n109_o <= n108_o or '1';
-  -- ../fixed_pkg.vhd:173:9
-  n110: postponed assert n109_o = '1' severity error; --  assert
-  -- ../fixed_pkg.vhd:177:9
-  n112_o <= not '0';
-  -- ../fixed_pkg.vhd:177:9
-  n113_o <= n112_o or '1';
-  -- ../fixed_pkg.vhd:177:9
-  n114: postponed assert n113_o = '1' severity error; --  assert
-  -- ../fixed_pkg.vhd:183:23
-  n116_o <= n86_o (17);
-  -- ../fixed_pkg.vhd:183:27
-  n117_o <= '1' when n116_o /= n103_o else '0';
-  -- ../fixed_pkg.vhd:183:17
-  n124_o <= '0' when n117_o = '0' else '1';
-  -- ../fixed_pkg.vhd:194:31
+  -- ../fixed_pkg.vhd:185:23
+  n107_o <= n86_o (17);
+  -- ../fixed_pkg.vhd:185:27
+  n108_o <= '1' when n107_o /= n103_o else '0';
+  -- ../fixed_pkg.vhd:185:17
+  n115_o <= '0' when n108_o = '0' else '1';
+  -- ../fixed_pkg.vhd:196:31
+  n121_o <= not n103_o;
+  -- ../fixed_pkg.vhd:196:31
+  n122_o <= not n103_o;
+  -- ../fixed_pkg.vhd:196:31
+  n123_o <= not n103_o;
+  -- ../fixed_pkg.vhd:196:31
+  n124_o <= not n103_o;
+  -- ../fixed_pkg.vhd:196:31
+  n125_o <= not n103_o;
+  -- ../fixed_pkg.vhd:196:31
+  n126_o <= not n103_o;
+  -- ../fixed_pkg.vhd:196:31
+  n127_o <= not n103_o;
+  -- ../fixed_pkg.vhd:196:31
+  n128_o <= not n103_o;
+  -- ../fixed_pkg.vhd:196:31
+  n129_o <= not n103_o;
+  -- ../fixed_pkg.vhd:196:31
   n130_o <= not n103_o;
-  -- ../fixed_pkg.vhd:194:31
+  -- ../fixed_pkg.vhd:196:31
   n131_o <= not n103_o;
-  -- ../fixed_pkg.vhd:194:31
+  -- ../fixed_pkg.vhd:196:31
   n132_o <= not n103_o;
-  -- ../fixed_pkg.vhd:194:31
+  -- ../fixed_pkg.vhd:196:31
   n133_o <= not n103_o;
-  -- ../fixed_pkg.vhd:194:31
+  -- ../fixed_pkg.vhd:196:31
   n134_o <= not n103_o;
-  -- ../fixed_pkg.vhd:194:31
+  -- ../fixed_pkg.vhd:196:31
   n135_o <= not n103_o;
-  -- ../fixed_pkg.vhd:194:31
+  -- ../fixed_pkg.vhd:196:31
   n136_o <= not n103_o;
-  -- ../fixed_pkg.vhd:194:31
+  -- ../fixed_pkg.vhd:196:31
   n137_o <= not n103_o;
-  -- ../fixed_pkg.vhd:194:31
+  -- ../fixed_pkg.vhd:196:31
   n138_o <= not n103_o;
-  -- ../fixed_pkg.vhd:194:31
-  n139_o <= not n103_o;
-  -- ../fixed_pkg.vhd:194:31
-  n140_o <= not n103_o;
-  -- ../fixed_pkg.vhd:194:31
-  n141_o <= not n103_o;
-  -- ../fixed_pkg.vhd:194:31
-  n142_o <= not n103_o;
-  -- ../fixed_pkg.vhd:194:31
-  n143_o <= not n103_o;
-  -- ../fixed_pkg.vhd:194:31
-  n144_o <= not n103_o;
-  -- ../fixed_pkg.vhd:194:31
-  n145_o <= not n103_o;
-  -- ../fixed_pkg.vhd:194:31
-  n146_o <= not n103_o;
-  -- ../fixed_pkg.vhd:194:31
-  n147_o <= not n103_o;
-  n148_o <= n130_o & n131_o & n132_o & n133_o;
-  n149_o <= n134_o & n135_o & n136_o & n137_o;
-  n150_o <= n138_o & n139_o & n140_o & n141_o;
-  n151_o <= n142_o & n143_o & n144_o & n145_o;
-  n152_o <= n146_o & n147_o;
-  n153_o <= n148_o & n149_o & n150_o & n151_o;
-  n154_o <= n153_o & n152_o;
-  n155_o <= n154_o (16 downto 0);
-  n156_o <= n103_o & n155_o;
-  -- ../fixed_pkg.vhd:193:9
-  n157_o <= n102_o when n124_o = '0' else n156_o;
+  n139_o <= n121_o & n122_o & n123_o & n124_o;
+  n140_o <= n125_o & n126_o & n127_o & n128_o;
+  n141_o <= n129_o & n130_o & n131_o & n132_o;
+  n142_o <= n133_o & n134_o & n135_o & n136_o;
+  n143_o <= n137_o & n138_o;
+  n144_o <= n139_o & n140_o & n141_o & n142_o;
+  n145_o <= n144_o & n143_o;
+  n146_o <= n145_o (16 downto 0);
+  n147_o <= n103_o & n146_o;
+  -- ../fixed_pkg.vhd:195:9
+  n148_o <= n102_o when n115_o = '0' else n147_o;
   -- Oscillator.vhd:53:13
-  n159_o <= n157_o when n64_o = '0' else n165_data;
+  n150_o <= n148_o when n64_o = '0' else n155_data;
   -- Oscillator.vhd:52:9
   process (wrap_clk_i)
   begin
     if rising_edge (wrap_clk_i) then
-      n163_q <= n159_o;
+      n153_q <= n150_o;
     end if;
   end process;
-  -- ../fixed_pkg.vhd:173:9
+  -- Oscillator.vhd:14:9
   process (n66_o) is
-    type n164_oport_type is array (0 to 25)
+    type n154_oport_type is array (0 to 25)
       of std_logic_vector (17 downto 0);
-    variable n164_oport : n164_oport_type :=
+    variable n154_oport : n154_oport_type :=
       (25 => "000000000000000000",
        24 => "000001000000010011",
        23 => "000010000000010110",
@@ -332,14 +310,14 @@ begin
        1 => "001111111101111111",
        0 => "010000000000000000");
   begin
-    n165_data <= n164_oport(to_integer (unsigned (n66_o)));
+    n155_data <= n154_oport(to_integer (unsigned (n66_o)));
   end process;
   -- Oscillator.vhd:54:38
   -- Oscillator.vhd:54:37
   process (n72_o) is
-    type n166_oport_type is array (0 to 25)
+    type n156_oport_type is array (0 to 25)
       of std_logic_vector (17 downto 0);
-    variable n166_oport : n166_oport_type :=
+    variable n156_oport : n156_oport_type :=
       (25 => "000000000000000000",
        24 => "000001000000010011",
        23 => "000010000000010110",
@@ -367,7 +345,7 @@ begin
        1 => "001111111101111111",
        0 => "010000000000000000");
   begin
-    n167_data <= n166_oport(to_integer (unsigned (n72_o)));
+    n157_data <= n156_oport(to_integer (unsigned (n72_o)));
   end process;
   -- Oscillator.vhd:56:39
 end rtl;

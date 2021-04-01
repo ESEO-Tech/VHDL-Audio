@@ -170,6 +170,7 @@ package body fixed_pkg is
         variable res : sfixed(left downto right) := (others => '0');
         variable saturate : boolean := false;
     begin
+        -- pragma translate off
         assert left >= right
             report "Invalid range order left=" & integer'image(left) & " right=" & integer'image(right)
             severity failure;
@@ -177,7 +178,8 @@ package body fixed_pkg is
         assert left >= arg'right and right <= arg'left
             report "Incompatible source and target ranges"
             severity failure;
-
+        -- pragma translate on
+        
         if left < arg'left then
             for i in arg'left - 1 downto left loop
                 if arg(i) /= sgn then
